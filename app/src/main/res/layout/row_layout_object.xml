@@ -5,7 +5,7 @@
     android:padding="6dip">
 
     <ImageView
-        android:id="@+id/iconObject"
+        android:id="@+id/iconPokemon"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
@@ -15,7 +15,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/typeObject_line"
+        android:id="@+id/attacksPokemon_line"
         android:layout_width="fill_parent"
         android:layout_height="32dp"
         android:layout_alignParentRight="true"
@@ -23,41 +23,41 @@
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_toRightOf="@id/iconObject"
+        android:layout_toRightOf="@id/iconPokemon"
         android:singleLine="true"
-        android:text="Type"
+        android:text="Attack 1, Attack 2, ..."
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/priceObject_line"
+        android:id="@+id/typePokemon_line"
         android:layout_width="fill_parent"
         android:layout_height="25dip"
-        android:layout_above="@+id/typeObject_line"
+        android:layout_above="@+id/attacksPokemon_line"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="34dp"
-        android:layout_toRightOf="@id/iconObject"
+        android:layout_toRightOf="@id/iconPokemon"
         android:singleLine="true"
-        android:text="Price"
+        android:text="Type"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/nameObject_line"
+        android:id="@+id/namePokemon_line"
         android:layout_width="fill_parent"
         android:layout_height="20dp"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_above="@+id/priceObject_line"
+        android:layout_above="@+id/typePokemon_line"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/iconObject"
-        android:layout_toRightOf="@id/iconObject"
+        android:layout_toEndOf="@+id/iconPokemon"
+        android:layout_toRightOf="@id/iconPokemon"
         android:gravity="center_vertical"
-        android:text="Object"
+        android:text="Pokémon"
         android:textSize="28sp" />
 
 </RelativeLayout>
