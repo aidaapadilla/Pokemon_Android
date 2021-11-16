@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dsa.ejercicios_practica.pokemon_android">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokemon_Android">
+        <activity
+            android:name=".AllPokemonsActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity4"
             android:exported="false" />

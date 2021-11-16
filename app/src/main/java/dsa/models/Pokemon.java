@@ -6,12 +6,12 @@ public class Pokemon {
     private double level;
     private String name;
     //private String aspect;
-    LinkedList<Atack> atackList = new LinkedList<Atack>();
+    LinkedList<Attack> atackList = new LinkedList<Attack>();
     private double health;
     private String type;
 
     public Pokemon(){}
-    public Pokemon(double level, String name, double health, String type, LinkedList<Atack> atackList){
+    public Pokemon(double level, String name, double health, String type, LinkedList<Attack> atackList){
         this();
         setLevel(level);
         setName(name);
@@ -32,6 +32,6 @@ public class Pokemon {
     public void setHealth(double health){this.health=health;}
     public double getHealth(){return this.health;}
 
-    public void setAtackList(LinkedList<Atack> atackList){this.atackList=atackList;}
-    public LinkedList<Atack> getAtackList(){return this.atackList;}
+    public void setAtackList(LinkedList<Attack> atackList){this.atackList=atackList;}
+    public LinkedList<Attack> getAtackList(){return this.atackList;}
 }
