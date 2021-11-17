@@ -98,6 +98,7 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
 
         holder.txtPriceObject.setText(Double.toString(object.getPrice()));
         holder.txtTypeObject.setText(object.getType());
+        //Falta posar la imatge
     }
 
     // Return the size of your dataset (invoked by the layout manager)

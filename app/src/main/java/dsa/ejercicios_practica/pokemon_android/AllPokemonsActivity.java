@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 
 import dsa.models.Pokemon;
+import dsa.services.PokemonService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,6 +25,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterPokemon mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    PokemonService API;
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
 
@@ -53,7 +55,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        //API = retrofit.create(API.class);
+        API = retrofit.create(PokemonService.class);
     }
 
     public void doApiCall(){
