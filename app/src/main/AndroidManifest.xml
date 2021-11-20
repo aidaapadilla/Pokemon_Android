@@ -18,16 +18,13 @@
             android:name=".AllPokemonsActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

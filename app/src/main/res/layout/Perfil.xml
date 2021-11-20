@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity3">
+    tools:context=".PerfilActivity">
 
     <TextView
-        android:id="@+id/nom_usuari"
+        android:id="@+id/usernameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="Pokemons"
-        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+        app:layout_constraintBottom_toBottomOf="@+id/pokemon1Text"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -72,33 +72,33 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/mapText"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/pokemon1Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:text="Name of the pokemon 1"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/nom_usuari" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/objectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Objects"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/mapText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name of the map"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/objectText"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <TextView
@@ -129,45 +129,45 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/pointsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of points"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/mapText"
         app:layout_constraintTop_toTopOf="@+id/textView16" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/moneyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Money"
-        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/pointsText"
         app:layout_constraintTop_toTopOf="@+id/textView17" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/avatarText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user name"
-        app:layout_constraintStart_toStartOf="@+id/textView20"
+        app:layout_constraintStart_toStartOf="@+id/moneyText"
         app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/pokemon2Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pokemon 2"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        tools:layout_editor_absoluteX="148dp" />
+        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon1Text" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/pokemon3Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pokemon 3"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon2Text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

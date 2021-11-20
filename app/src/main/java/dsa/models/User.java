@@ -1,5 +1,7 @@
 package dsa.models;
 
+import android.widget.TextView;
+
 public class User {
     private String username;
     private String password;
@@ -20,6 +22,10 @@ public class User {
         setUsername(username);
         setPassword(password);
     }
+    public int CheckUser(String username,String password){ //0 no existeix 1 si existeix
+        return 0; //if it doesn't exist
+    }
+
 
     public void setUsername(String username){this.username=username;}
     public String getUsername(){return this.username;}
