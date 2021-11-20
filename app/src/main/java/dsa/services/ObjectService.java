@@ -13,5 +13,6 @@ import retrofit2.http.PUT;
 public interface ObjectService {
     @GET("/objects")
     Call<Object> getObjects(@Body List<Object> objectList );
+    //Els gets diria que no poden portar body
 
 }

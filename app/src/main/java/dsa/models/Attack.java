@@ -1,12 +1,12 @@
 package dsa.models;
 
-public class Atack {
+public class Attack {
     private String name;
     private String type;
     private double damage;
 
-    public Atack(){}
-    public Atack(String name, String type, double damage){
+    public Attack(){}
+    public Attack(String name, String type, double damage){
         this();
         setName(name);
         setType(type);
