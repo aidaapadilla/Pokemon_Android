@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.lang.Character;
-import java.lang.Object;
-
 import dsa.models.Map;
 import dsa.models.Pokemon;
 import dsa.models.User;
-import dsa.models.*;
+import dsa.models.Character;
+import dsa.models.Object;
 
 public class PerfilActivity extends AppCompatActivity {
     User user;
@@ -44,7 +42,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         TextView objects;
         objects = findViewById(R.id.objectText);
-        //objects.setText(object2.); No se perque no em detecta el get name del object
+        objects.setText(this.object2.getName());
 
         TextView nameMap;
         nameMap = findViewById(R.id.mapText);
@@ -52,15 +50,15 @@ public class PerfilActivity extends AppCompatActivity {
 
         TextView points;
         points = findViewById(R.id.pointsText);
-        //points.setText(character.getPoints().toString()); No em detecta els punts del usuari
+        points.setText(String.valueOf(character.getPoints()));
 
         TextView money;
         money = findViewById(R.id.moneyText);
-        // money.setText(character.getMoney().toString());
+        money.setText(String.valueOf(character.getMoney()));
 
         TextView avatar;
         avatar = findViewById(R.id.avatarText);
-        //avatar.setText(character.getName());
+        avatar.setText(character.getNickname());
     }
 
 }

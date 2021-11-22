@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import dsa.models.Object;
+import dsa.models.Map;
+import dsa.models.Character;
 import dsa.models.Pokemon;
 import dsa.models.User;
 
@@ -16,8 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
     String email;
     String username;
     String password;
-    Pokemon pokemon;
-    Character avatar;
+    Pokemon firstPokemon;
+    Character firstAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +43,11 @@ public class RegisterActivity extends AppCompatActivity {
         password = (String) passwordText.getText();
 
         //Buscar el avatar X i el pokemon X
+        String name= String.valueOf(avatarSelected); //faltaria buscar quin avatar es
 
-
-        User usuari = new User(username,password,email,avatar);
+        User usuari = new User(username,password,email,name);
+        firstPokemon = firstPokemon.searchPokemon(pokemonSelected);
+        firstAvatar = firstAvatar.searchCharacter(avatarSelected);
     }
     public int selectAvatar1(View view){
         if(avatarSelected==0) { avatarSelected = 1; }

@@ -42,4 +42,9 @@ public class Character {
         int res = (int) (this.getPoints()-c.getPoints());
         return res;
     }
+
+    public Character searchCharacter(int character){ //buscar els 3 primers avatars
+        Character firstCharacter = new Character();
+        return firstCharacter;
+    }
 }

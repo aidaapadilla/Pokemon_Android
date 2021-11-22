@@ -34,4 +34,9 @@ public class Pokemon {
 
     public void setAtackList(LinkedList<Attack> atackList){this.atackList=atackList;}
     public LinkedList<Attack> getAtackList(){return this.atackList;}
+
+    public Pokemon searchPokemon(int pokemon){ //Per buscar a la base de dades els 3 primers pokemons
+        Pokemon firstPokemon = new Pokemon();
+        return firstPokemon;
+    }
 }
