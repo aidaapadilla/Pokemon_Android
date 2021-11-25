@@ -48,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         User usuari = new User(username,password,email,name);
         firstPokemon = firstPokemon.searchPokemon(pokemonSelected);
         firstAvatar = firstAvatar.searchCharacter(avatarSelected);
+        usuari.setCharacter(firstAvatar);
     }
     public int selectAvatar1(View view){
         if(avatarSelected==0) { avatarSelected = 1; }
