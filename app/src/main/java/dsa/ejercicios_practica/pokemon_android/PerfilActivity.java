@@ -26,7 +26,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         //Hem de buscar quin usuari ha entrat a aquesta finestra
         TextView usernameText;
-        usernameText = findViewById(R.id.usernameText);
+        usernameText = findViewById(R.id.usernameEditText);
 
         TextView pokemon1;
         pokemon1 = findViewById(R.id.pokemon1Text);

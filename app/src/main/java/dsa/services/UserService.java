@@ -8,7 +8,7 @@ import retrofit2.http.PUT;
 
 public interface UserService{
     @POST("/user")
-    Call<User> postUser(@Body User user);
+    Call<User> postUser(@Body User user); //Register??
     @POST("/login")
-    Call<User> login(@Body User user);
+    Call<User> login(@Body String username, String pwd);  //nom i usuari?
 }

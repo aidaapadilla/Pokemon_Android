@@ -24,11 +24,13 @@ public class User {
         setPassword(password);
     }
 
-
+    /*
     public int CheckUser(String username,String password){ //0 no existeix 1 si existeix
         return 0; //if it doesn't exist
     }
 
+
+     */
 
     public void setUsername(String username){this.username=username;}
     public String getUsername(){return this.username;}
