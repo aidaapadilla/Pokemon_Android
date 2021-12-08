@@ -19,10 +19,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ProfilelActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     CharacterService API;
+
+    Character character;
 
     TextView usernameText;
     TextView pokemon1Text;
@@ -54,6 +56,7 @@ public class ProfilelActivity extends AppCompatActivity {
 
         createAPI();
         doAPIcall(userID);
+        setData(character);
     }
 
     public void createAPI(){
@@ -75,8 +78,7 @@ public class ProfilelActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 if(response.isSuccessful()){
-                    Character c = response.body();
-                    setData(c);
+                    character = response.body();
                 }
             }
 

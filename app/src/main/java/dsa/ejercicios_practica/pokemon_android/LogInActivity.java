@@ -3,6 +3,7 @@ package dsa.ejercicios_practica.pokemon_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -56,6 +57,11 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
+    public void registerClick(View view){
+        Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
+        getBaseContext().startActivity(intent);
+    }
+
     public void login_click(View view) {
 
         username = usernameEditText.getText().toString();
@@ -71,17 +77,10 @@ public class LogInActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
                     userLogged = response.body();
-                    Context context = getApplicationContext();
-                    String text = "user found";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                    /*
-                    Intent intent = new Intent(getBaseContext(), PerfilActivity.class);
+
+                    Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
                     intent.putExtra("id",userLogged.getId());
                     getBaseContext().startActivity(intent);
-
-                     */
 
                 }
                 else{

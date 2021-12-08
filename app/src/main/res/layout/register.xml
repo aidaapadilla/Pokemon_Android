@@ -10,7 +10,7 @@
         android:id="@+id/avatar2"
         android:layout_width="68dp"
         android:layout_height="63dp"
-        android:onClick="selectAvatar2"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="@+id/avatar3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -23,7 +23,8 @@
         android:layout_width="68dp"
         android:layout_height="63dp"
         android:layout_marginEnd="50dp"
-        android:onClick="selectAvatar1"
+        android:clickable="false"
+        android:onClick="selectAvatarClick"
         app:layout_constraintBottom_toBottomOf="@+id/avatar2"
         app:layout_constraintEnd_toStartOf="@+id/avatar2"
         app:layout_constraintHorizontal_bias="1.0"
@@ -35,7 +36,7 @@
         android:id="@+id/pokemon3"
         android:layout_width="68dp"
         android:layout_height="63dp"
-        android:onClick="selectPokemon3"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,7 +49,7 @@
         android:id="@+id/pokemon1"
         android:layout_width="68dp"
         android:layout_height="63dp"
-        android:onClick="selectPokemon1"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="@+id/pokemon2"
         app:layout_constraintEnd_toStartOf="@+id/pokemon2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,20 +61,20 @@
         android:id="@+id/emailTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="Write your email"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailEditText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintVertical_bias="0.06999999" />
 
     <EditText
         android:id="@+id/emailEditText"
-        android:layout_width="328dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="324dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -87,7 +88,7 @@
         android:id="@+id/usernameRegisterEditText"
         android:layout_width="324dp"
         android:layout_height="43dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -95,27 +96,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailTextBox"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintTop_toBottomOf="@+id/usernameRegisterText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/usernameRegisterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:text="Write your User name"
-        app:layout_constraintBottom_toTopOf="@+id/usernameRegisterEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/usernameRegisterEditText"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/passwordRegisterEditText"
         android:layout_width="324dp"
         android:layout_height="42dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:inputType="textPassword"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -130,7 +131,7 @@
         android:id="@+id/passwordRegisterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:text="Insert your password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +144,7 @@
         android:id="@+id/pokemonRegisterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:text="Choose a pokemon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,14 +157,13 @@
         android:id="@+id/avatarRegisterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:text="Choose an avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/pokemonRegisterText"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/pokemonRadioGroup"
+        app:layout_constraintVertical_bias="0.01999998" />
 
     <ImageView
         android:id="@+id/avatar3"
@@ -171,7 +171,7 @@
         android:layout_height="63dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
-        android:onClick="selectAvatar3"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -184,7 +184,7 @@
         android:id="@+id/pokemon2"
         android:layout_width="68dp"
         android:layout_height="63dp"
-        android:onClick="selectPokemon2"
+        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -197,12 +197,123 @@
         android:id="@+id/registerRegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="register"
+        android:layout_marginBottom="10dp"
+        android:onClick="registerClick"
         android:text="REGISTER"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatar2"
-        app:layout_constraintVertical_bias="0.41000003" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/registerTitleText"
+        android:layout_width="113dp"
+        android:layout_height="35dp"
+        android:text="REGISTER"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <RadioGroup
+        android:id="@+id/pokemonRadioGroup"
+        android:layout_width="313dp"
+        android:layout_height="53dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pokemon3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon2"
+        app:layout_constraintVertical_bias="0.01999998">
+
+        <RadioButton
+            android:id="@+id/pokemon1RadioBt"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:text="Charmander"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/pokemon2RadioBt"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Squirtle"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/pokemon3RadioBt"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Bulbasaur"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/avatarRadioGroup"
+        android:layout_width="313dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/registerRegisterButton"
+        app:layout_constraintEnd_toEndOf="@+id/avatar3"
+        app:layout_constraintStart_toStartOf="@+id/avatar1"
+        app:layout_constraintTop_toBottomOf="@+id/avatar2"
+        app:layout_constraintVertical_bias="0.00999999">
+
+        <RadioButton
+            android:id="@+id/avatar1RadioBt"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:text="Red"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/avatar2RadioBt"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="May"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/avatar3RadioBt"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="James" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/nicknameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Insert your nickname:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/avatarRegisterText"
+        app:layout_constraintTop_toBottomOf="@+id/avatarRadioGroup"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/nicknameEditText"
+        android:layout_width="324dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nicknameText"
+        app:layout_constraintTop_toBottomOf="@+id/nicknameText"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
