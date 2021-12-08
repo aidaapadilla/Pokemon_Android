@@ -4,15 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewDebug;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import dsa.models.Object;
-import dsa.models.Map;
 import dsa.models.Character;
 import dsa.models.Pokemon;
 import dsa.models.User;
+import dsa.services.UserService;
 
 public class RegisterActivity extends AppCompatActivity {
     int pokemonSelected=0;
@@ -23,23 +20,26 @@ public class RegisterActivity extends AppCompatActivity {
     Pokemon firstPokemon;
     Character firstAvatar;
 
+    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+    UserService API;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Register);
+        setContentView(R.layout.register);
     }
 
     public void register(View view){
         TextView emailText;
-        emailText = findViewById(R.id.emailText);
+        emailText = findViewById(R.id.emailEditText);
         email = (String) emailText.getText();
 
         TextView usernameText;
-        usernameText = findViewById(R.id.UserName_text);
+        usernameText = findViewById(R.id.usernameRegisterEditText);
         username = (String) usernameText.getText();
 
         TextView passwordText;
-        passwordText = findViewById(R.id.Password_text);
+        passwordText = findViewById(R.id.passwordRegisterEditText);
         password = (String) passwordText.getText();
 
         //Buscar el avatar X i el pokemon X

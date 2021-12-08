@@ -2,9 +2,11 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,6 +24,9 @@ public class LogInActivity extends AppCompatActivity {
     String username;
     String password;
     User userLogged;
+
+    TextView usernameEditText;
+    TextView passwordEditText;
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     UserService API;
@@ -42,64 +47,64 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.LogIn);
+        setContentView(R.layout.login);
+
+        usernameEditText = findViewById(R.id.usernameProfileText);
+        passwordEditText = findViewById(R.id.passwordEditText);
 
         createAPI();
 
     }
 
-    public void register_click(View view) {
-        //try{
-        TextView usernameText;
-        usernameText = findViewById(R.id.usernameEditText);
+    public void login_click(View view) {
 
+        username = usernameEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+        doLoginCall(username,password);
 
-        TextView userpassword;
-        userpassword = findViewById(R.id.passwordEditText);
-        username = usernameText.getText().toString();
-        password = userpassword.getText().toString();
-        doRegisterCall(username,password);
-        if(userLogged!=null){
-            //intent
-        }
     }
 
-    public void doRegisterCall(String username, String password){
+    public void doLoginCall(String username, String password){
         Call<User> call = API.login(username, password);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
                     userLogged = response.body();
+                    Context context = getApplicationContext();
+                    String text = "user found";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    /*
+                    Intent intent = new Intent(getBaseContext(), PerfilActivity.class);
+                    intent.putExtra("id",userLogged.getId());
+                    getBaseContext().startActivity(intent);
+
+                     */
+
                 }
-                //else
+                else{
+                    Context context = getApplicationContext();
+                    String text = "User not found, try again!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                t.printStackTrace();
+                Context context = getApplicationContext();
+                String text = "Error";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
     }
-
-/*
-            //funcio per trobar a la base de dades si correspon
-            if(t.CheckUser(username,password)==0)
-            {
-                //the user doesn't exist
-            }
-            if(t.CheckUser(username,password)==1)
-            {
-                //the user exists open the new activity
-            }
-
-        //}
-        //catch(NullTextView) {
-
-        //}
-
-    }
-
- */
 
 }

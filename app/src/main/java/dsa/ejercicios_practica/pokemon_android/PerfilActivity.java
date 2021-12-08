@@ -5,60 +5,77 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import dsa.models.Map;
 import dsa.models.Pokemon;
 import dsa.models.User;
 import dsa.models.Character;
 import dsa.models.Object;
+import dsa.services.UserService;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PerfilActivity extends AppCompatActivity {
     User user;
-    Pokemon pokemon1;
-    Pokemon pokemon2;
-    Pokemon pokemon3;
     Character character;
-    Object object2;
     Map map;
+    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+    UserService API;
+
+    TextView usernameText;
+    TextView pokemon1Text;
+    TextView pokemon2Text;
+    TextView pokemon3Text;
+    TextView objectsText;
+    TextView nameMapText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Perfil);
+        setContentView(R.layout.perfil);
+    /*
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("id");
 
-        //Hem de buscar quin usuari ha entrat a aquesta finestra
-        TextView usernameText;
-        usernameText = findViewById(R.id.usernameEditText);
+     */
 
-        TextView pokemon1;
-        pokemon1 = findViewById(R.id.pokemon1Text);
-        pokemon1.setText(this.pokemon1.getName());
-        
-        TextView pokemon2;
-        pokemon2 = findViewById(R.id.pokemon2Text);
-        pokemon2.setText(this.pokemon2.getName());
-        
-        TextView pokemon3;
-        pokemon3 = findViewById(R.id.pokemon3Text);
-        pokemon3.setText(this.pokemon3.getName());
+        createAPI();
 
-        TextView objects;
-        objects = findViewById(R.id.objectText);
-        objects.setText(this.object2.getName());
 
-        TextView nameMap;
-        nameMap = findViewById(R.id.mapText);
-        nameMap.setText(this.map.getName());
+        usernameText = findViewById(R.id.usernameProfileText);
+        pokemon1Text = findViewById(R.id.pokemon1ProfileText);
+        pokemon2Text = findViewById(R.id.pokemon2ProfileText);
+        pokemon3Text = findViewById(R.id.pokemon3ProfileText);
+        objectsText = findViewById(R.id.objectsUserProfileText);
+        nameMapText = findViewById(R.id.mapUserProfileText);
 
         TextView points;
-        points = findViewById(R.id.pointsText);
+        points = findViewById(R.id.pointsUserProfileText);
         points.setText(String.valueOf(character.getPoints()));
 
         TextView money;
-        money = findViewById(R.id.moneyText);
+        money = findViewById(R.id.moneyUserProfileText);
         money.setText(String.valueOf(character.getMoney()));
 
         TextView avatar;
         avatar = findViewById(R.id.avatarText);
         avatar.setText(character.getNickname());
+
+    }
+
+    public void createAPI(){
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        //API = retrofit.create(CharacterService.class);
     }
 
 }

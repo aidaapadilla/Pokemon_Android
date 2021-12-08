@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     tools:context=".PerfilActivity">
 
     <TextView
-        android:id="@+id/usernameEditText"
+        android:id="@+id/usernameProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -16,11 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/avatarProfileImage"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/avatarProfileImage"
         android:layout_width="81dp"
         android:layout_height="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,16 +29,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/pokemonsProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
         android:text="Pokemons"
-        app:layout_constraintBottom_toBottomOf="@+id/pokemon1Text"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/pokemon1ProfileText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/play"
@@ -49,20 +53,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/mapProfileImage"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/objectsProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="Objects"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pokemonsProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonsProfileText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/mapProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -70,136 +78,131 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/objectsProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/objectsProfileText"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/mapProfileImage"
         android:layout_width="211dp"
         android:layout_height="111dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapText"
+        app:layout_constraintTop_toBottomOf="@+id/mapUserProfileText"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/pokemon1Text"
+        android:id="@+id/pokemon1ProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:text="Name of the pokemon 1"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/usernameEditText" />
+        android:text="pokemon 1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pokemonsProfileText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999" />
 
     <TextView
-        android:id="@+id/objectText"
+        android:id="@+id/objectsUserProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Objects"
-        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintBottom_toBottomOf="@+id/objectsProfileText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1ProfileText"
+        app:layout_constraintTop_toTopOf="@+id/objectsProfileText" />
 
     <TextView
-        android:id="@+id/mapText"
+        android:id="@+id/mapUserProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name of the map"
-        app:layout_constraintStart_toStartOf="@+id/objectText"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/objectsUserProfileText"
+        app:layout_constraintTop_toTopOf="@+id/mapProfileText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/pointsProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Points"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pointsText"
+        app:layout_constraintEnd_toStartOf="@+id/pointsUserProfileText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/mapProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/mapProfileImage"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/moneyProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Money"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/moneyText"
+        app:layout_constraintEnd_toStartOf="@+id/moneyUserProfileText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/pointsProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/pointsProfileText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Avatar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/avatarText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/pointsText"
+        android:id="@+id/pointsUserProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of points"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintBottom_toBottomOf="@+id/pointsProfileText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/mapText"
-        app:layout_constraintTop_toTopOf="@+id/textView16" />
+        app:layout_constraintStart_toStartOf="@+id/mapUserProfileText"
+        app:layout_constraintTop_toTopOf="@+id/pointsProfileText" />
 
     <TextView
-        android:id="@+id/moneyText"
+        android:id="@+id/moneyUserProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Money"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintBottom_toBottomOf="@+id/moneyProfileText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/pointsText"
-        app:layout_constraintTop_toTopOf="@+id/textView17" />
+        app:layout_constraintStart_toStartOf="@+id/pointsUserProfileText"
+        app:layout_constraintTop_toTopOf="@+id/moneyProfileText" />
 
     <TextView
-        android:id="@+id/avatarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user name"
-        app:layout_constraintBottom_toBottomOf="@+id/textView18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/moneyText"
-        app:layout_constraintTop_toTopOf="@+id/textView18" />
-
-    <TextView
-        android:id="@+id/pokemon2Text"
+        android:id="@+id/pokemon2ProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pokemon 2"
-        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon1Text" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1ProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon1ProfileText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/pokemon3Text"
+        android:id="@+id/pokemon3ProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Pokemon 3"
-        app:layout_constraintStart_toStartOf="@+id/pokemon1Text"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon2Text" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1ProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon2ProfileText"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
