@@ -28,9 +28,9 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         public ViewHolder(View v) {
             super(v);
             layout = v;
-            txtNamePokemon = (TextView) v.findViewById(R.id.namePokemon_line);
-            txtTypePokemon = (TextView) v.findViewById(R.id.typePokemon_line);
-            txtAttacksPokemon = (TextView) v.findViewById(R.id.attacksPokemon_line);
+            txtNamePokemon = (TextView) v.findViewById(R.id.nameObject);
+            txtTypePokemon = (TextView) v.findViewById(R.id.descriptionObject);
+            txtAttacksPokemon = (TextView) v.findViewById(R.id.priceObject);
         }
     }
 

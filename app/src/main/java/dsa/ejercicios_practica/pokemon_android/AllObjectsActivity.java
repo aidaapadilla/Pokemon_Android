@@ -3,6 +3,7 @@ package dsa.ejercicios_practica.pokemon_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import dsa.models.Object;
 import dsa.services.ObjectService;
@@ -28,6 +30,7 @@ public class AllObjectsActivity extends AppCompatActivity {
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     ObjectService API;
+    List<Object>objectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +61,21 @@ public class AllObjectsActivity extends AppCompatActivity {
         API = retrofit.create(ObjectService.class);
     }
 
+    //Devuelve la lista con todos los objetos
     public void doApiCall(){
         Call<List<Object>> call = API.getObjects();
         call.enqueue(new Callback<List<Object>>() {
             @Override
             public void onResponse(Call<List<Object>> call, Response<List<Object>> response) {
-                if(response.isSuccessful()) {
-                    List<Object> objectList = response.body();
+                if(!response.body().isEmpty()) {
+                    objectList = response.body();
                     mAdapter.setData(objectList);
 
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
-                    //System.out.println(response.errorBody());
+                    Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllObjectsActivity.this,"Lista de objetos vacía",Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
 

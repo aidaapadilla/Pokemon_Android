@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout"
     android:layout_width="fill_parent"
     android:layout_height="120dp"
     android:padding="6dip">
 
     <ImageView
-        android:id="@+id/iconPokemon"
+        android:id="@+id/imgObject"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
@@ -15,49 +16,63 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/attacksPokemon_line"
-        android:layout_width="fill_parent"
-        android:layout_height="32dp"
+        android:id="@+id/priceObject"
+        android:layout_width="72dp"
+        android:layout_height="28dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toRightOf="@id/iconPokemon"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="256dp"
+        android:layout_marginBottom="6dp"
+        android:layout_toRightOf="@id/imgObject"
         android:singleLine="true"
-        android:text="Attack 1, Attack 2, ..."
+        android:text="Price"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/typePokemon_line"
+        android:id="@+id/descriptionObject"
         android:layout_width="fill_parent"
         android:layout_height="25dip"
-        android:layout_above="@+id/attacksPokemon_line"
+        android:layout_above="@+id/priceObject"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="34dp"
-        android:layout_toRightOf="@id/iconPokemon"
+        android:layout_toRightOf="@id/imgObject"
         android:singleLine="true"
-        android:text="Type"
+        android:text="Description"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/namePokemon_line"
+        android:id="@+id/nameObject"
         android:layout_width="fill_parent"
         android:layout_height="20dp"
         android:layout_alignWithParentIfMissing="true"
-        android:layout_above="@+id/typePokemon_line"
+        android:layout_above="@+id/descriptionObject"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/iconPokemon"
-        android:layout_toRightOf="@id/iconPokemon"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="2dp"
+        android:layout_toEndOf="@+id/imgObject"
+        android:layout_toRightOf="@id/imgObject"
         android:gravity="center_vertical"
         android:text="Pokémon"
         android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/buyButtonObject"
+        android:layout_width="232dp"
+        android:layout_height="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:text="Button" />
 
 </RelativeLayout>

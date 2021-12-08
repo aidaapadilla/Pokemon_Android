@@ -5,44 +5,48 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import dsa.models.Attack;
 import dsa.models.Object;
-import dsa.models.Pokemon;
 
 public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder>{
-    private List<Object> values;
+    private List<Object> objectList;
 
+    //creamos una plantilla de objeto
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtNameObject;
         public TextView txtPriceObject;
-        public TextView txtTypeObject;
+        public TextView txtDescriptionObject;
+        public ImageView imgObject;
         public View layout;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
-            txtNameObject = (TextView) v.findViewById(R.id.namePokemon_line);
-            txtPriceObject = (TextView) v.findViewById(R.id.typePokemon_line);
-            txtTypeObject = (TextView) v.findViewById(R.id.attacksPokemon_line);
+            txtNameObject = (TextView) v.findViewById(R.id.nameObject);
+            txtDescriptionObject = (TextView) v.findViewById(R.id.descriptionObject);
+            txtPriceObject = (TextView) v.findViewById(R.id.priceObject);
+            imgObject = (ImageView) v.findViewById(R.id.imgObject);
         }
     }
 
+    //rellena la lista de objetos con el AllObjectsActivity
     public void setData(List<Object> myDataset) {
-        values = myDataset;
+        objectList = myDataset;
         notifyDataSetChanged();
     }
 
     public void add(int position, Object item) {
-        values.add(position, item);
+        objectList.add(position, item);
         notifyItemInserted(position);
     }
 
@@ -60,11 +64,11 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public AdapterObject(List<Object> myDataset) {
-        values = myDataset;
+        objectList = myDataset;
     }
 
     public AdapterObject() {
-        values = new ArrayList<>();
+        objectList = new ArrayList<>();
     }
 
     // Create new views (invoked by the layout manager)
@@ -86,9 +90,13 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
     public void onBindViewHolder(AdapterObject.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Object object = values.get(position);
-        final String name = object.getName();
-        holder.txtNameObject.setText(name);
+        Object object = objectList.get(position);
+        holder.txtNameObject.setText(object.getName());
+        holder.txtPriceObject.setText(Double.toString(object.getPrice()));
+        holder.txtDescriptionObject.setText(object.getDescription());
+        Bitmap bitmap = StringToBitmap(object.getImage());
+        holder.imgObject.setImageBitmap(bitmap);
+
         holder.txtNameObject.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,14 +104,16 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
             }
         });
 
-        holder.txtPriceObject.setText(Double.toString(object.getPrice()));
-        holder.txtTypeObject.setText(object.getType());
-        //Falta posar la imatge
+    }
+    private Bitmap StringToBitmap (String encodedimage){
+        byte[] decoded = Base64.decode(encodedimage,Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decoded,0, decoded.length);
+        return bitmap;
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return values.size();
+        return objectList.size();
     }
 }
