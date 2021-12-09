@@ -70,7 +70,6 @@ public class AllObjectsActivity extends AppCompatActivity {
                 if(!response.body().isEmpty()) {
                     objectList = response.body();
                     mAdapter.setData(objectList);
-
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {

@@ -73,8 +73,7 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
 
     // Create new views (invoked by the layout manager)
     @Override
-    public AdapterObject.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                        int viewType) {
+    public AdapterObject.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());

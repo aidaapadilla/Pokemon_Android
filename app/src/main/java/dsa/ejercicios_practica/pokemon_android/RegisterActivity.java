@@ -110,26 +110,26 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
         String email = emailText.getText().toString();
         String nickname = nicknameText.getText().toString();
-
+        String img="";
         Pokemon pokemon = null;
 
         if(pokemon1Bt.isChecked()){
             LinkedList<Attack> listAttacks = new LinkedList<Attack>();
             listAttacks.add(new Attack("ember","fire",3));
             listAttacks.add(new Attack("scratch","normal",2));
-            pokemon = new Pokemon(1,"charmander",10,"fire",listAttacks);
+            pokemon = new Pokemon("charmander",1,10,"fire",listAttacks,img);
         }
         else if(pokemon2Bt.isChecked()){
             LinkedList<Attack> listAttacks = new LinkedList<Attack>();
             listAttacks.add(new Attack("bubble","water",3));
             listAttacks.add(new Attack("tackle","normal",2));
-            pokemon = new Pokemon(1,"squirtle",10,"water",listAttacks);
+            pokemon = new Pokemon("squirtle",1,10,"water",listAttacks,img);
         }
         else if(pokemon3Bt.isChecked()){
             LinkedList<Attack> listAttacks = new LinkedList<Attack>();
             listAttacks.add(new Attack("razor leaf","grass",3));
             listAttacks.add(new Attack("take down","normal",2));
-            pokemon = new Pokemon(1,"bulbasaur",10,"grass",listAttacks);
+            pokemon = new Pokemon("bulbasaur",1,10,"grass",listAttacks,img);
         }
         LinkedList<Pokemon> listPokemons = new LinkedList<Pokemon>();
         listPokemons.add(pokemon);

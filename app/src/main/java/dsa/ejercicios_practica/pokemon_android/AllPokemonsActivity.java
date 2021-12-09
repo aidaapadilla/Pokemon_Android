@@ -3,6 +3,7 @@ package dsa.ejercicios_practica.pokemon_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,10 +26,10 @@ public class AllPokemonsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterPokemon mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    PokemonService API;
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
-
+    PokemonService API;
+    List<Pokemon>pokemonList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +64,23 @@ public class AllPokemonsActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Pokemon>>() {
             @Override
             public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
-                if(response.isSuccessful()) {
-                    List<Pokemon> pokemonList = response.body();
+                if(!response.body().isEmpty()) {
+                    pokemonList=response.body();
                     mAdapter.setData(pokemonList);
-
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
+                    Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllPokemonsActivity.this,"Lista de pokemons vacía",Toast.LENGTH_SHORT);
+                    toast.show();
                     //System.out.println(response.errorBody());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Pokemon>> call, Throwable t) {
-                t.printStackTrace();
+                Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllPokemonsActivity.this,"ERROR DE CONEXIÓN, no se ha podido realizar la petición.",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
     }
-
-
-
 }
