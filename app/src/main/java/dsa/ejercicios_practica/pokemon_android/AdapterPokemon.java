@@ -91,12 +91,12 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         Pokemons pokemon = pokemonList.get(position);
         holder.txtNamePokemon.setText(pokemon.getName());
         holder.txtTypePokemon.setText(pokemon.getType());
-        Bitmap bitmap = StringToBitmap(pokemon.getImage());
-        List<Attack> attackList = pokemon.getAtackList();
-        String attackString = attackList.get(0).getName();
-        for(Attack a:attackList){attackString = (attackString + "," + a.getName()); }
-        holder.txtAttacksPokemon.setText(attackString);
-        holder.imgPokemon.setImageBitmap(bitmap);
+        //Bitmap bitmap = StringToBitmap(pokemon.getImage());
+        //List<Attack> attackList = pokemon.getAtackList();
+        //String attackString = attackList.get(0).getName();
+        //for(Attack a:attackList){attackString = (attackString + "," + a.getName()); }
+        //holder.txtAttacksPokemon.setText(attackString);
+        //holder.imgPokemon.setImageBitmap(bitmap);
 
         //Funcion que al clicar el nombre ejecuta alguna funcion que falta rellenar
         holder.txtNamePokemon.setOnClickListener(new OnClickListener() {

@@ -5,12 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -76,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         doAPIcall(user);
 
 
-        Intent intent = new Intent(view.getContext(), CharacterChoiceActivity.class);
+        Intent intent = new Intent(view.getContext(), CharacterCreationActivity.class);
         intent.putExtra("character name",userRegistered.getCharactername());
         view.getContext().startActivity(intent);
     }
@@ -86,7 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.i("joana",""+response.code());
                 if (response.code()!=404){
                     userRegistered = response.body();
                 }

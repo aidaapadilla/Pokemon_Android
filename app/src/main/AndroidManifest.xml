@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokemon_Android">
         <activity
-            android:name=".CharacterChoiceActivity"
+            android:name=".CharacterCreationActivity"
             android:exported="true" />
         <activity
             android:name=".AllObjectsActivity"

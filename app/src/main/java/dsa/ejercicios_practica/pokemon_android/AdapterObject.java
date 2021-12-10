@@ -93,8 +93,8 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
         holder.txtNameObject.setText(object.getName());
         holder.txtPriceObject.setText(Double.toString(object.getPrice()));
         holder.txtDescriptionObject.setText(object.getDescription());
-        Bitmap bitmap = StringToBitmap(object.getImage());
-        holder.imgObject.setImageBitmap(bitmap);
+        //Bitmap bitmap = StringToBitmap(object.getImage());
+        //holder.imgObject.setImageBitmap(bitmap);
 
         holder.txtNameObject.setOnClickListener(new OnClickListener() {
             @Override

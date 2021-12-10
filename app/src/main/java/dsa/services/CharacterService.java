@@ -9,8 +9,8 @@ import retrofit2.http.Path;
 
 public interface CharacterService {
     final String BASE_URL = "http://10.0.2.2:8080";
-    @GET("/character/{name}")
+    @GET("/dsaApp/endpoint/character/{name}")
     Call<Character> getCharacter(@Path("name") String name);
-    @POST("/character")
+    @POST("/dsaApp/endpoint/character")
     Call<Character> newCharacter(@Body Character character);
 }

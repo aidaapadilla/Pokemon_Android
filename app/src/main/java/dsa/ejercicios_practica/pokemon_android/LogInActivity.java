@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Credentials;
+import dsa.models.User;
 import dsa.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +26,7 @@ public class LogInActivity extends AppCompatActivity {
     //Necessitem la informació de la persona
     String username;
     String password;
-    Credentials userLoggedCredentials;
+    User userLogged;
 
     TextView usernameEditText;
     TextView passwordEditText;
@@ -51,7 +52,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        usernameEditText = findViewById(R.id.usernameProfileText);
+        usernameEditText = findViewById(R.id.characternameProfileText);
         passwordEditText = findViewById(R.id.passwordEditText);
 
         createAPI();
@@ -69,19 +70,19 @@ public class LogInActivity extends AppCompatActivity {
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);
         Intent intent = new Intent(view.getContext(), ProfileActivity.class);
-        intent.putExtra("id", userLoggedCredentials.getUsername());
+        intent.putExtra("character name", userLogged.getCharactername());
         view.getContext().startActivity(intent);
     }
 
     public void doLoginCall(String username, String password){
         Credentials credentials = new Credentials(username,password);
-        Call<Credentials> call = API.login(credentials);
-        call.enqueue(new Callback<Credentials>() {
+        Call<User> call = API.login(credentials);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Credentials> call, Response<Credentials> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 Log.i("joana",""+response.code());
                 if (response.code()!=404){
-                    userLoggedCredentials = response.body();
+                    userLogged = response.body();
                 }
                 else{
                     Context context = getApplicationContext();
@@ -94,7 +95,7 @@ public class LogInActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Credentials> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 t.printStackTrace();
                 Context context = getApplicationContext();
                 String text = "Error";

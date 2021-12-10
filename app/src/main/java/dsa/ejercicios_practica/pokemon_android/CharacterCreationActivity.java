@@ -2,11 +2,15 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -15,12 +19,17 @@ import dsa.models.Character;
 import dsa.models.Pokemons;
 import dsa.services.CharacterService;
 import dsa.services.UserService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CharacterChoiceActivity extends AppCompatActivity {
+public class CharacterCreationActivity extends AppCompatActivity {
 
     CharacterService API;
+
+    Character newCharacter;
 
     String name;
 
@@ -40,6 +49,8 @@ public class CharacterChoiceActivity extends AppCompatActivity {
     RadioButton avatar1Bt;
     RadioButton avatar2Bt;
     RadioButton avatar3Bt;
+
+    TextView title;
 
     public void createAPI(){
         Gson gson = new GsonBuilder()
@@ -76,6 +87,13 @@ public class CharacterChoiceActivity extends AppCompatActivity {
         avatar2Bt = findViewById(R.id.avatar2RadioBt);
         avatar3Bt = findViewById(R.id.avatar3RadioBt);
 
+        title = findViewById(R.id.nameCharacterText);
+
+        Intent intent = getIntent();
+        name = intent.getStringExtra("character name");
+        String text = "Hello "+name+"!";
+        title.setText(text);
+
         createAPI();
     }
 
@@ -103,6 +121,42 @@ public class CharacterChoiceActivity extends AppCompatActivity {
             avatar = "James";
         }
         Character character = new Character(name,0.,0.,pokemon,null,null,null,null,null);
+        doAPIcall(character);
+
+        Intent intent = new Intent(view.getContext(), ProfileActivity.class);
+        intent.putExtra("character name", newCharacter.getName());
+        view.getContext().startActivity(intent);
+    }
+
+    public void doAPIcall(Character character){
+        Call<Character> call = API.newCharacter(character);
+        call.enqueue(new Callback<Character>() {
+            @Override
+            public void onResponse(Call<Character> call, Response<Character> response) {
+                if (response.code()!=500) {
+                    newCharacter = response.body();
+                }
+                else{
+                    Context context = getApplicationContext();
+                    String text = "Error in creating the character";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Character> call, Throwable t) {
+                t.printStackTrace();
+                Context context = getApplicationContext();
+                String text = "Error in connectivity";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        });
     }
 
 }

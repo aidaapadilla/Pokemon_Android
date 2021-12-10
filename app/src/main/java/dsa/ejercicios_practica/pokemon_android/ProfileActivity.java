@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     Character character;
 
-    TextView usernameText;
+    TextView characternameText;
     TextView pokemon1Text;
     TextView pokemon2Text;
     TextView pokemon3Text;
@@ -41,11 +41,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("id");
+        String charactername = intent.getStringExtra("character name");
 
-
-
-        usernameText = findViewById(R.id.usernameProfileText);
+        characternameText = findViewById(R.id.characternameProfileText);
         pokemon1Text = findViewById(R.id.pokemon1ProfileText);
         pokemon2Text = findViewById(R.id.pokemon2ProfileText);
         pokemon3Text = findViewById(R.id.pokemon3ProfileText);
@@ -55,7 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         moneyText = findViewById(R.id.moneyUserProfileText);
 
         createAPI();
-        doAPIcall(userID);
+        doAPIcall(charactername);
         setData(character);
     }
 
@@ -65,15 +63,15 @@ public class ProfileActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(CharacterService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         API = retrofit.create(CharacterService.class);
     }
 
-    public void doAPIcall(String userId){
-        Call<Character> call = API.getCharacter(userId);
+    public void doAPIcall(String name){
+        Call<Character> call = API.getCharacter(name);
         call.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
@@ -94,22 +92,35 @@ public class ProfileActivity extends AppCompatActivity {
 
         //falten les imatges del map i del avatar
 
-        usernameText.setText(c.getNickname());
-        pokemon1Text.setText(c.getPokemons().get(0).getName());
-        pokemon2Text.setText(c.getPokemons().get(1).getName());
-        pokemon3Text.setText(c.getPokemons().get(2).getName());
-        int i = 0;
+        characternameText.setText(c.getName());
+        if(c.getPokemon1_name()!=null) {
+            pokemon1Text.setText(c.getPokemon1_name());
+        }
+        if(c.getPokemon2_name()!=null) {
+            pokemon2Text.setText(c.getPokemon2_name());
+        }
+        if(c.getPokemon3_name()!=null) {
+            pokemon3Text.setText(c.getPokemon3_name());
+        }
+
         String text = null;
-        while(i < c.getObjects().size()){
-            text = text + c.getObjects().get(i).getName();
+        if(c.getObject1_name()!=null){
+            text = text + c.getObject1_name() + ",";
+        }
+        if(c.getObject2_name()!=null){
+            text = text + c.getObject2_name() + ",";
+        }
+        if(c.getObject3_name()!=null){
+            text = text + c.getObject3_name() + ",";
         }
         objectsText.setText(text);
-        //nameMapText.setText(c.getMap().getName());
+
         pointsText.setText(Double.toString(c.getPoints()));
+
+        //falta mapa
     }
 
     public void playClick(View v){
-        Button bt = (Button) v;
         //obrir la partida
     }
 

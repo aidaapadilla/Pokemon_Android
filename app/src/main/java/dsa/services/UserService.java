@@ -12,5 +12,5 @@ public interface UserService{
     @POST("/dsaApp/endpoint/user")
     Call<User> register(@Body User user); //Register??
     @POST("/dsaApp/endpoint/login")
-    Call<Credentials> login(@Body Credentials credentials);  //nom i usuari?
+    Call<User> login(@Body Credentials credentials);
 }

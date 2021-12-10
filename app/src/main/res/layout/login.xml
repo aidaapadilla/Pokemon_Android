@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.06999999" />
 
     <EditText
-        android:id="@+id/usernameProfileText"
+        android:id="@+id/characternameProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -66,9 +66,9 @@
         android:layout_marginTop="10dp"
         android:text="Insert your username"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/usernameProfileText"
-        app:layout_constraintStart_toStartOf="@+id/usernameProfileText"
-        app:layout_constraintTop_toBottomOf="@+id/usernameProfileText"
+        app:layout_constraintEnd_toEndOf="@+id/characternameProfileText"
+        app:layout_constraintStart_toStartOf="@+id/characternameProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/characternameProfileText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
