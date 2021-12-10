@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import dsa.models.Credentials;
 import dsa.models.User;
 import dsa.services.UserService;
 import retrofit2.Call;
@@ -24,12 +26,12 @@ public class LogInActivity extends AppCompatActivity {
     //Necessitem la informació de la persona
     String username;
     String password;
-    User userLogged;
+    Credentials userLogged;
 
     TextView usernameEditText;
     TextView passwordEditText;
 
-    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+
     UserService API;
 
     public void createAPI(){
@@ -38,7 +40,7 @@ public class LogInActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(UserService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -58,8 +60,8 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void registerClick(View view){
-        Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
-        getBaseContext().startActivity(intent);
+        Intent intent = new Intent(view.getContext(), RegisterActivity.class);
+        view.getContext().startActivity(intent);
     }
 
     public void login_click(View view) {
@@ -72,16 +74,27 @@ public class LogInActivity extends AppCompatActivity {
 
     public void doLoginCall(String username, String password){
         User u = new User(username,password);
-        Call<User> call = API.login(u);
-        call.enqueue(new Callback<User>() {
+        Call<Credentials> call = API.login(u);
+        call.enqueue(new Callback<Credentials>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()){
+            public void onResponse(Call<Credentials> call, Response<Credentials> response) {
+                Log.i("joana",""+response.code());
+                if (response.code()!=404){
                     userLogged = response.body();
 
+
+                    String text = "User found!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(LogInActivity.this, text, duration);
+                    toast.show();
+
+                    /*
                     Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
                     intent.putExtra("id",userLogged.getId());
                     getBaseContext().startActivity(intent);
+
+                     */
 
                 }
                 else{
@@ -95,7 +108,7 @@ public class LogInActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<Credentials> call, Throwable t) {
                 t.printStackTrace();
                 Context context = getApplicationContext();
                 String text = "Error";

@@ -2,6 +2,7 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -139,9 +141,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         doAPIcall(user);
 
+        /*
         Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
         intent.putExtra("id",userId);
         getBaseContext().startActivity(intent);
+
+         */
     }
 
     public void doAPIcall(User user){
@@ -151,12 +156,32 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.isSuccessful()){
                     userId = response.body();
+                    Context context = getApplicationContext();
+                    String text = "User registered!";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else{
+                    Context context = getApplicationContext();
+                    String text = "Error in register";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
+                t.printStackTrace();
+                Context context = getApplicationContext();
+                String text = "Error in connectivity";
+                int duration = Toast.LENGTH_SHORT;
 
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
         });
     }
