@@ -71,7 +71,8 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void doLoginCall(String username, String password){
-        Call<User> call = API.login(username, password);
+        User u = new User(username,password);
+        Call<User> call = API.login(u);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

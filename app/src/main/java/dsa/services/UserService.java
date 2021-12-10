@@ -10,5 +10,5 @@ public interface UserService{
     @POST("/user")
     Call<String> register(@Body User user); //Register??
     @POST("/login")
-    Call<User> login(@Body String username, String pwd);  //nom i usuari?
+    Call<User> login(@Body User user);  //nom i usuari?
 }
