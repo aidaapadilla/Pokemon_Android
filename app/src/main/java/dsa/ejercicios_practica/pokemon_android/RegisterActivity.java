@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,7 +34,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     UserService API;
 
     EditText emailText;
@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
     RadioButton avatar2Bt;
     RadioButton avatar3Bt;
 
-    String userId;
+    User userRegistered;
 
     public void createAPI(){
         Gson gson = new GsonBuilder()
@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(UserService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -112,8 +112,10 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
         String email = emailText.getText().toString();
         String nickname = nicknameText.getText().toString();
+        /*
         String img="";
         Pokemon pokemon = null;
+
 
         if(pokemon1Bt.isChecked()){
             LinkedList<Attack> listAttacks = new LinkedList<Attack>();
@@ -137,7 +139,8 @@ public class RegisterActivity extends AppCompatActivity {
         listPokemons.add(pokemon);
 
         Character character = new Character(username,0,0,listPokemons,null);
-        User user = new User(username,password,email,character.getNickname());
+        */
+        User user = new User(username,password,email,nickname);
 
         doAPIcall(user);
 
@@ -150,12 +153,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void doAPIcall(User user){
-        Call<String> call = API.register(user);
-        call.enqueue(new Callback<String>() {
+        Call<User> call = API.register(user);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()){
-                    userId = response.body();
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("joana",""+response.code());
+                if (response.code()!=404){
+                    userRegistered = response.body();
                     Context context = getApplicationContext();
                     String text = "User registered!";
                     int duration = Toast.LENGTH_SHORT;
@@ -174,7 +178,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 t.printStackTrace();
                 Context context = getApplicationContext();
                 String text = "Error in connectivity";

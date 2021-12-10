@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Credentials;
-import dsa.models.User;
 import dsa.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +25,7 @@ public class LogInActivity extends AppCompatActivity {
     //Necessitem la informació de la persona
     String username;
     String password;
-    Credentials userLogged;
+    Credentials userLoggedCredentials;
 
     TextView usernameEditText;
     TextView passwordEditText;
@@ -69,33 +68,20 @@ public class LogInActivity extends AppCompatActivity {
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);
-
+        Intent intent = new Intent(view.getContext(), ProfileActivity.class);
+        intent.putExtra("id", userLoggedCredentials.getUsername());
+        view.getContext().startActivity(intent);
     }
 
     public void doLoginCall(String username, String password){
-        User u = new User(username,password);
-        Call<Credentials> call = API.login(u);
+        Credentials credentials = new Credentials(username,password);
+        Call<Credentials> call = API.login(credentials);
         call.enqueue(new Callback<Credentials>() {
             @Override
             public void onResponse(Call<Credentials> call, Response<Credentials> response) {
                 Log.i("joana",""+response.code());
                 if (response.code()!=404){
-                    userLogged = response.body();
-
-
-                    String text = "User found!";
-                    int duration = Toast.LENGTH_SHORT;
-
-                    Toast toast = Toast.makeText(LogInActivity.this, text, duration);
-                    toast.show();
-
-                    /*
-                    Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
-                    intent.putExtra("id",userLogged.getId());
-                    getBaseContext().startActivity(intent);
-
-                     */
-
+                    userLoggedCredentials = response.body();
                 }
                 else{
                     Context context = getApplicationContext();
