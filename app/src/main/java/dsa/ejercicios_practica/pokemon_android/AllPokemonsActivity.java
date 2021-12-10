@@ -13,7 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import dsa.models.Pokemon;
+import dsa.models.Pokemons;
 import dsa.services.PokemonService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +29,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     PokemonService API;
-    List<Pokemon>pokemonList;
+    List<Pokemons>pokemonList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +60,10 @@ public class AllPokemonsActivity extends AppCompatActivity {
     }
 
     public void doApiCall(){
-        Call<List<Pokemon>> call = API.getPokemons();
-        call.enqueue(new Callback<List<Pokemon>>() {
+        Call<List<Pokemons>> call = API.getPokemons();
+        call.enqueue(new Callback<List<Pokemons>>() {
             @Override
-            public void onResponse(Call<List<Pokemon>> call, Response<List<Pokemon>> response) {
+            public void onResponse(Call<List<Pokemons>> call, Response<List<Pokemons>> response) {
                 if(!response.body().isEmpty()) {
                     pokemonList=response.body();
                     mAdapter.setData(pokemonList);
@@ -77,7 +77,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Pokemon>> call, Throwable t) {
+            public void onFailure(Call<List<Pokemons>> call, Throwable t) {
                 Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllPokemonsActivity.this,"ERROR DE CONEXIÓN, no se ha podido realizar la petición.",Toast.LENGTH_SHORT);
                 toast.show();
             }

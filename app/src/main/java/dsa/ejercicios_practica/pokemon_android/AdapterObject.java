@@ -15,10 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dsa.models.Object;
+import dsa.models.Objects;
 
 public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder>{
-    private List<Object> objectList;
+    private List<Objects> objectList;
 
     //creamos una plantilla de objeto
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,12 +40,12 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
     }
 
     //rellena la lista de objetos con el AllObjectsActivity
-    public void setData(List<Object> myDataset) {
+    public void setData(List<Objects> myDataset) {
         objectList = myDataset;
         notifyDataSetChanged();
     }
 
-    public void add(int position, Object item) {
+    public void add(int position, Objects item) {
         objectList.add(position, item);
         notifyItemInserted(position);
     }
@@ -63,7 +63,7 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
      */
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterObject(List<Object> myDataset) {
+    public AdapterObject(List<Objects> myDataset) {
         objectList = myDataset;
     }
 
@@ -89,7 +89,7 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
     public void onBindViewHolder(AdapterObject.ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Object object = objectList.get(position);
+        Objects object = objectList.get(position);
         holder.txtNameObject.setText(object.getName());
         holder.txtPriceObject.setText(Double.toString(object.getPrice()));
         holder.txtDescriptionObject.setText(object.getDescription());

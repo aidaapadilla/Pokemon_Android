@@ -3,10 +3,10 @@ package dsa.models;
 public class Attack {
     private String name;
     private String type;
-    private double damage;
+    private Double damage;
 
     public Attack(){}
-    public Attack(String name, String type, double damage){
+    public Attack(String name, String type, Double damage){
         this();
         setName(name);
         setType(type);
@@ -19,6 +19,6 @@ public class Attack {
     public void setType(String type){this.type=type;}
     public String getType(){return this.type;}
 
-    public void setDamage(double damage){this.damage=damage;}
-    public double getDamage(){return this.damage;}
+    public void setDamage(Double damage){this.damage=damage;}
+    public Double getDamage(){return this.damage;}
 }

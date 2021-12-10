@@ -6,4 +6,194 @@
     android:layout_height="match_parent"
     tools:context=".CharacterChoiceActivity">
 
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Let's start your adventure! First choose your character appareance and your initial pokemon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameCharacterText"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <TextView
+        android:id="@+id/nameCharacterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello player1!"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <ImageView
+        android:id="@+id/avatar1imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avatarChoiceText"
+        app:layout_constraintStart_toStartOf="@+id/avatarChoiceText"
+        app:layout_constraintTop_toBottomOf="@+id/avatarChoiceText"
+        app:layout_constraintVertical_bias="0.050000012"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/avatar2imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avatar1imageView"
+        app:layout_constraintStart_toStartOf="@+id/avatar1imageView"
+        app:layout_constraintTop_toBottomOf="@+id/avatar1imageView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/avatar3imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avatar2imageView"
+        app:layout_constraintStart_toStartOf="@+id/avatar2imageView"
+        app:layout_constraintTop_toBottomOf="@+id/avatar2imageView"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/avatarChoiceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avatar:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameCharacterText"
+        app:layout_constraintVertical_bias="0.120000005" />
+
+    <TextView
+        android:id="@+id/pokemonChoiceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pokemon:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/avatarChoiceText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/avatarChoiceText" />
+
+    <ImageView
+        android:id="@+id/pokemon1imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar1imageView"
+        app:layout_constraintEnd_toEndOf="@+id/pokemonChoiceText"
+        app:layout_constraintStart_toStartOf="@+id/pokemonChoiceText"
+        app:layout_constraintTop_toTopOf="@+id/avatar1imageView"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/pokemon2imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar2imageView"
+        app:layout_constraintEnd_toEndOf="@+id/pokemon1imageView"
+        app:layout_constraintStart_toStartOf="@+id/pokemon1imageView"
+        app:layout_constraintTop_toTopOf="@+id/avatar2imageView"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/pokemon3imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar3imageView"
+        app:layout_constraintEnd_toEndOf="@+id/pokemon2imageView"
+        app:layout_constraintStart_toStartOf="@+id/pokemon2imageView"
+        app:layout_constraintTop_toTopOf="@+id/avatar3imageView"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <RadioGroup
+        android:id="@+id/avatarRadioGroup"
+        android:layout_width="80dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/avatarChoiceText"
+        app:layout_constraintStart_toStartOf="@+id/avatarChoiceText"
+        app:layout_constraintTop_toBottomOf="@+id/avatar1imageView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/avatar1RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="0dp"
+            android:text="May" />
+
+        <RadioButton
+            android:id="@+id/avatar2RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:text="Red" />
+
+        <RadioButton
+            android:id="@+id/avatar3RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:text="James" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/pokemonRadioGroup"
+        android:layout_width="110dp"
+        android:layout_height="340dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pokemonChoiceText"
+        app:layout_constraintStart_toStartOf="@+id/pokemonChoiceText"
+        app:layout_constraintTop_toBottomOf="@+id/pokemon1imageView"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/pokemon1RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Charmander" />
+
+        <RadioButton
+            android:id="@+id/pokemon2RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:text="Squirtle" />
+
+        <RadioButton
+            android:id="@+id/pokemon3RadioBt"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:text="Bulbasaur" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/goCharacterBt"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:onClick="goClick"
+        android:text="GO!"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/avatarRadioGroup"
+        app:layout_constraintVertical_bias="0.100000024" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

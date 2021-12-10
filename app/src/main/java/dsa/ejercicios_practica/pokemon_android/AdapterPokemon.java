@@ -16,11 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import dsa.models.Attack;
-import dsa.models.Pokemon;
+import dsa.models.Pokemons;
 
 public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHolder> {
 
-    private List<Pokemon> pokemonList;
+    private List<Pokemons> pokemonList;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -41,12 +41,12 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         }
     }
 
-    public void setData(List<Pokemon> myDataset) {
+    public void setData(List<Pokemons> myDataset) {
         pokemonList = myDataset;
         notifyDataSetChanged();
     }
 
-    public void add(int position, Pokemon item) {
+    public void add(int position, Pokemons item) {
         pokemonList.add(position, item);
         notifyItemInserted(position);
     }
@@ -64,7 +64,7 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
      */
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterPokemon(List<Pokemon> myDataset) {
+    public AdapterPokemon(List<Pokemons> myDataset) {
         pokemonList = myDataset;
     }
 
@@ -88,7 +88,7 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Pokemon pokemon = pokemonList.get(position);
+        Pokemons pokemon = pokemonList.get(position);
         holder.txtNamePokemon.setText(pokemon.getName());
         holder.txtTypePokemon.setText(pokemon.getType());
         Bitmap bitmap = StringToBitmap(pokemon.getImage());

@@ -9,6 +9,7 @@ public class User {
     private String email;
     private String charactername;
     //private Character character;
+
     public User(){
 
     }
@@ -42,5 +43,11 @@ public class User {
 
     public void setCharactername(String c){this.charactername =c;}
     public String getCharactername(){return this.charactername;}
-
+    /*
+    public int compareTo(User c)
+    {
+        int res = (int) (this.getCharacter().getPoints()-c.getCharacter().getPoints());
+        return res;
+    }
+    */
 }

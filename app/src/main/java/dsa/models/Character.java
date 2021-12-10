@@ -1,50 +1,83 @@
 package dsa.models;
 
 import java.util.LinkedList;
-
 public class Character {
-    private String nickname;
-    private double money;
-    private double points;
+    private String name;
+    private Double money;
+    private Double points;
     //private String avatar;
-    LinkedList<Pokemon> pokemons = new LinkedList<Pokemon>();
-    LinkedList<Object> objects = new LinkedList<Object>();
+    private String pokemon1_name;
+    private String pokemon2_name;
+    private String pokemon3_name;
+    private String object1_name;
+    private String object2_name;
+    private String object3_name;
+    //LinkedList<Pokemons> pokemons = new LinkedList<Pokemons>();
+    //LinkedList<Object> objects = new LinkedList<Object>();
 
     public Character(){}
-    public Character(String nickname,double money,double points,LinkedList<Pokemon> pokemons,LinkedList<Object> objects){
+    public Character(String name, Double money, Double points, String p1_name, String p2_name, String p3_name, String o1_name, String o2_name, String o3_name){
         this();
-        setNickname(nickname);
+        setName(name);
         setMoney(money);
         setPoints(points);
-        setPokemons(pokemons);
-        setObjects(objects);
+        setPokemon1_name(p1_name);
+        setPokemon2_name(p2_name);
+        setPokemon3_name(p3_name);
+        setObject1_name(o1_name);
+        setObject2_name(o2_name);
+        setObject3_name(o3_name);
+        //setPokemons(pokemons);
+        //setObjects(objects);
     }
 
-    public void setNickname(String nickname){this.nickname=nickname;}
-    public String getNickname(){return this.nickname;}
+    public void setName(String name){this.name=name;}
+    public String getName(){return this.name;}
 
-    public void setMoney(double money){this.money=money;}
-    public double getMoney(){return this.money;}
+    public void setMoney(Double money){this.money=money;}
+    public Double getMoney(){return this.money;}
 
-    public void setPoints(double points){this.points=points;}
-    public double getPoints(){return this.points;}
+    public void setPoints(Double points){this.points=points;}
+    public Double getPoints(){return this.points;}
 
-    public void addPokemon(Pokemon pokemon){this.pokemons.add(pokemon);}
-    public void setPokemons(LinkedList<Pokemon> pokemons){this.pokemons=pokemons;}
-    public LinkedList<Pokemon> getPokemons(){return this.pokemons;}
+    //public void addPokemon(Pokemons pokemons){this.pokemons.add(pokemons);}
+    //public void setPokemons(LinkedList<Pokemons> pokemons){this.pokemons=pokemons;}
+    //public LinkedList<Pokemons> getPokemons(){return this.pokemons;}
 
-    public void setObjects(LinkedList<Object> objects){this.objects=objects;}
-    public LinkedList<Object> getObjects(){return this.objects;}
+    //public void setObjects(LinkedList<Object> objects){this.objects=objects;}
+    //public LinkedList<Object> getObjects(){return this.objects;}
 
-    public void addObject(Object object){this.objects.add(object);}
+    public void setPokemon1_name(String p){this.pokemon1_name=p;}
+    public String getPokemon1_name(){return this.pokemon1_name;}
+
+    public void setPokemon2_name(String p){this.pokemon2_name=p;}
+    public String getPokemon2_name(){return this.pokemon2_name;}
+
+    public void setPokemon3_name(String p){this.pokemon3_name=p;}
+    public String getPokemon3_name(){return this.pokemon3_name;}
+
+    public void setObject1_name(String o){this.object1_name=o;}
+    public String getObject1_name(){return this.object1_name;}
+
+    public void setObject2_name(String o){this.object2_name=o;}
+    public String getObject2_name(){return this.object2_name;}
+
+    public void setObject3_name(String o){this.object3_name=o;}
+    public String getObject3_name(){return this.object3_name;}
+
+    public void addObject(Objects objects){
+        if (object1_name==null)
+            object1_name= objects.getName();
+        else if (object2_name==null)
+            object2_name= objects.getName();
+        else if (object3_name==null)
+            object3_name= objects.getName();
+    }
+    /*
     public int compareTo(Character c)
     {
         int res = (int) (this.getPoints()-c.getPoints());
         return res;
     }
-
-    public Character searchCharacter(int character){ //buscar els 3 primers avatars
-        Character firstCharacter = new Character();
-        return firstCharacter;
-    }
+    */
 }

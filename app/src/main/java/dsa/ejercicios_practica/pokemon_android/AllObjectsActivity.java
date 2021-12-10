@@ -12,9 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import dsa.models.Object;
+import dsa.models.Objects;
 import dsa.services.ObjectService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +29,7 @@ public class AllObjectsActivity extends AppCompatActivity {
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     ObjectService API;
-    List<Object>objectList;
+    List<Objects>objectList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +62,10 @@ public class AllObjectsActivity extends AppCompatActivity {
 
     //Devuelve la lista con todos los objetos
     public void doApiCall(){
-        Call<List<Object>> call = API.getObjects();
-        call.enqueue(new Callback<List<Object>>() {
+        Call<List<Objects>> call = API.getObjects();
+        call.enqueue(new Callback<List<Objects>>() {
             @Override
-            public void onResponse(Call<List<Object>> call, Response<List<Object>> response) {
+            public void onResponse(Call<List<Objects>> call, Response<List<Objects>> response) {
                 if(!response.body().isEmpty()) {
                     objectList = response.body();
                     mAdapter.setData(objectList);
@@ -79,7 +78,7 @@ public class AllObjectsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Object>> call, Throwable t) {
+            public void onFailure(Call<List<Objects>> call, Throwable t) {
                 t.printStackTrace();
             }
         });
