@@ -69,20 +69,24 @@ public class LogInActivity extends AppCompatActivity {
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);
-        Intent intent = new Intent(view.getContext(), ProfileActivity.class);
+
+        Intent intent = new Intent(LogInActivity.this, ProfileActivity.class);
         intent.putExtra("character name", userLogged.getCharactername());
-        view.getContext().startActivity(intent);
+        LogInActivity.this.startActivity(intent);
     }
 
     public void doLoginCall(String username, String password){
+
         Credentials credentials = new Credentials(username,password);
         Call<User> call = API.login(credentials);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 Log.i("joana",""+response.code());
+
                 if (response.code()!=404){
-                    userLogged = response.body();
+                    User res = response.body();
+                    setUserLogged(res);
                 }
                 else{
                     Context context = getApplicationContext();
@@ -105,6 +109,10 @@ public class LogInActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void setUserLogged(User userLogged){
+        this.userLogged = userLogged;
     }
 
 }
