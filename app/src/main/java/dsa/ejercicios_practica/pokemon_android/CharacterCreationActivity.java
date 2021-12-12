@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,9 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Character;
-import dsa.models.Pokemons;
 import dsa.services.CharacterService;
-import dsa.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,8 +27,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CharacterCreationActivity extends AppCompatActivity {
 
     CharacterService API;
-
-    Character newCharacter;
 
     String name;
 
@@ -68,7 +65,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_choice);
+        setContentView(R.layout.activity_character_creation);
 
         avatar1 = findViewById(R.id.avatar1imageView);
         avatar2 = findViewById(R.id.avatar2imageView);
@@ -90,14 +87,15 @@ public class CharacterCreationActivity extends AppCompatActivity {
         title = findViewById(R.id.nameCharacterText);
 
         Intent intent = getIntent();
-        name = intent.getStringExtra("character name");
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        name = sharedPref.getString("charactername",null);
         String text = "Hello "+name+"!";
         title.setText(text);
 
         createAPI();
     }
 
-    protected void goClick(View view){
+    public void goClick(View view){
         String pokemon=null;
         String avatar = null;
 
@@ -123,9 +121,6 @@ public class CharacterCreationActivity extends AppCompatActivity {
         Character character = new Character(name,0.,0.,pokemon,null,null,null,null,null);
         doAPIcall(character);
 
-        Intent intent = new Intent(view.getContext(), ProfileActivity.class);
-        intent.putExtra("character name", newCharacter.getName());
-        view.getContext().startActivity(intent);
     }
 
     public void doAPIcall(Character character){
@@ -134,7 +129,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 if (response.code()!=500) {
-                    newCharacter = response.body();
+                    openProfileActivity();
                 }
                 else{
                     Context context = getApplicationContext();
@@ -157,6 +152,11 @@ public class CharacterCreationActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void openProfileActivity(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
     }
 
 }

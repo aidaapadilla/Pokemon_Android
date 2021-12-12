@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,8 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     EditText usernameText;
     EditText passwordText;
     EditText nicknameText;
-
-    User userRegistered;
 
     public void createAPI(){
         Gson gson = new GsonBuilder()
@@ -71,10 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         doAPIcall(user);
 
-
-        Intent intent = new Intent(view.getContext(), CharacterCreationActivity.class);
-        intent.putExtra("character name",userRegistered.getCharactername());
-        view.getContext().startActivity(intent);
     }
 
     public void doAPIcall(User user){
@@ -82,8 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("register",""+response.code());
                 if (response.code()!=404){
-                    userRegistered = response.body();
+                    User userRegistered = response.body();
+                    saveUserLogged(userRegistered);
+                    openCharacterCreationActivity();
                 }
                 else{
                     Context context = getApplicationContext();
@@ -108,6 +107,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    public void saveUserLogged(User user){
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name",user.getName());
+        editor.putString("password",user.getPassword());
+        editor.putString("charactername",user.getCharactername());
+        editor.commit();
+    }
 
+    public void openCharacterCreationActivity(){
+        Intent intent = new Intent(this, CharacterCreationActivity.class);
+        this.startActivity(intent);
+    }
 
 }

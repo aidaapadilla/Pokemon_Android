@@ -82,7 +82,7 @@ public class LogInActivity extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                Log.i("joana",""+response.code());
+                Log.i("login",""+response.code());
 
                 if (response.code()!=404){
                     User res = response.body();
