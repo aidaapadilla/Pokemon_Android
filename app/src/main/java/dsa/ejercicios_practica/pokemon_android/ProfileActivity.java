@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -25,6 +26,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     CharacterService API;
+
+    ImageView avatarImg;
+    ImageView mapImg;
 
     TextView characternameText;
     TextView pokemon1Text;
@@ -50,6 +54,8 @@ public class ProfileActivity extends AppCompatActivity {
         nameMapText = findViewById(R.id.mapUserProfileText);
         pointsText = findViewById(R.id.pointsUserProfileText);
         moneyText = findViewById(R.id.moneyUserProfileText);
+        avatarImg = findViewById(R.id.avatarProfileImage);
+        mapImg = findViewById(R.id.mapProfileImage);
 
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String charactername = sharedPref.getString("charactername",null);
@@ -94,7 +100,16 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void setData(Character c){
 
-        //falten les imatges del map i del avatar
+
+        if(c.getAvatar().equals("may")) {
+            avatarImg.setImageResource(R.drawable.may);
+        }
+        else if(c.getAvatar().equals("red")){
+            avatarImg.setImageResource(R.drawable.red);
+        }
+        else if(c.getAvatar().equals("james")){
+            avatarImg.setImageResource(R.drawable.james);
+        }
 
         characternameText.setText(c.getName());
         if(c.getPokemon1_name()!=null) {
@@ -113,7 +128,7 @@ public class ProfileActivity extends AppCompatActivity {
                 text = text + c.getObject1_name() + ",";
             }
             else{
-                text = c.getObject1_name();
+                text = c.getObject1_name() + ",";
             }
         }
         if(c.getObject2_name()!=null){
@@ -121,7 +136,7 @@ public class ProfileActivity extends AppCompatActivity {
                 text = text + c.getObject2_name() + ",";
             }
             else{
-                text = c.getObject2_name();
+                text = c.getObject2_name() + ",";
             }
         }
         if(c.getObject3_name()!=null){
@@ -129,7 +144,7 @@ public class ProfileActivity extends AppCompatActivity {
                 text = text + c.getObject3_name() + ",";
             }
             else{
-                text = c.getObject3_name();
+                text = c.getObject3_name() + ",";
             }
 
         }

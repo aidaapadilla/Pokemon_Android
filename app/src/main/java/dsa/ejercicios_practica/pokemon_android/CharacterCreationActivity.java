@@ -110,15 +110,15 @@ public class CharacterCreationActivity extends AppCompatActivity {
         }
 
         if(avatar1Bt.isChecked()){
-            avatar = "May";
+            avatar = "may";
         }
         else if(avatar2Bt.isChecked()){
-            avatar = "Red";
+            avatar = "red";
         }
         else if(avatar3Bt.isChecked()){
-            avatar = "James";
+            avatar = "james";
         }
-        Character character = new Character(name,0.,0.,pokemon,null,null,null,null,null);
+        Character character = new Character(name,avatar,0.,0.,pokemon,null,null,null,null,null);
         doAPIcall(character);
 
     }

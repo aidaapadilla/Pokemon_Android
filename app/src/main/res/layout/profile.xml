@@ -29,7 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        tools:srcCompat="@drawable/may" />
+        app:srcCompat="@drawable/bulbasaur"
+        tools:srcCompat="@drawable/bulbasaur" />
 
     <TextView
         android:id="@+id/pokemonsProfileText"
@@ -93,6 +94,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapUserProfileText"
         app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/map"
         tools:srcCompat="@drawable/map" />
 
     <TextView
