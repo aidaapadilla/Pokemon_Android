@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07999998"
-        tools:srcCompat="@mipmap/ic_launcher" />
+        tools:srcCompat="@drawable/may" />
 
     <TextView
         android:id="@+id/pokemonsProfileText"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapUserProfileText"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@mipmap/ic_launcher" />
+        tools:srcCompat="@drawable/map" />
 
     <TextView
         android:id="@+id/pokemon1ProfileText"

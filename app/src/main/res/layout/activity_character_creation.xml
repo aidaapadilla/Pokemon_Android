@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="@+id/avatarChoiceText"
         app:layout_constraintTop_toBottomOf="@+id/avatarChoiceText"
         app:layout_constraintVertical_bias="0.050000012"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/may" />
 
     <ImageView
         android:id="@+id/avatar2imageView"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="@+id/avatar1imageView"
         app:layout_constraintTop_toBottomOf="@+id/avatar1imageView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/red" />
 
     <ImageView
         android:id="@+id/avatar3imageView"
@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="@+id/avatar2imageView"
         app:layout_constraintTop_toBottomOf="@+id/avatar2imageView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/james" />
 
     <TextView
         android:id="@+id/avatarChoiceText"
@@ -98,7 +98,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pokemonChoiceText"
         app:layout_constraintStart_toStartOf="@+id/pokemonChoiceText"
         app:layout_constraintTop_toTopOf="@+id/avatar1imageView"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/charmander" />
 
     <ImageView
         android:id="@+id/pokemon2imageView"
@@ -108,7 +108,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pokemon1imageView"
         app:layout_constraintStart_toStartOf="@+id/pokemon1imageView"
         app:layout_constraintTop_toTopOf="@+id/avatar2imageView"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/squirtle" />
 
     <ImageView
         android:id="@+id/pokemon3imageView"
@@ -118,7 +118,7 @@
         app:layout_constraintEnd_toEndOf="@+id/pokemon2imageView"
         app:layout_constraintStart_toStartOf="@+id/pokemon2imageView"
         app:layout_constraintTop_toTopOf="@+id/avatar3imageView"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/bulbasaur" />
 
     <RadioGroup
         android:id="@+id/avatarRadioGroup"

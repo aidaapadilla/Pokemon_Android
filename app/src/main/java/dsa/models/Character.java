@@ -5,7 +5,7 @@ public class Character {
     private String name;
     private Double money;
     private Double points;
-    //private String avatar;
+    private String avatar;
     private String pokemon1_name;
     private String pokemon2_name;
     private String pokemon3_name;
