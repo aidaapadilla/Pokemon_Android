@@ -2,7 +2,9 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
     static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     CharacterService API;
 
-    Character character;
-
     TextView characternameText;
     TextView pokemon1Text;
     TextView pokemon2Text;
@@ -41,7 +41,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         Intent intent = getIntent();
-        String charactername = intent.getStringExtra("character name");
 
         characternameText = findViewById(R.id.characternameProfileText);
         pokemon1Text = findViewById(R.id.pokemon1ProfileText);
@@ -52,9 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
         pointsText = findViewById(R.id.pointsUserProfileText);
         moneyText = findViewById(R.id.moneyUserProfileText);
 
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        String charactername = sharedPref.getString("charactername",null);
+
         createAPI();
-        doAPIcall(charactername);
-        setData(character);
+        if(charactername!=null) {
+            doAPIcall(charactername);
+        }
     }
 
     public void createAPI(){
@@ -76,7 +79,8 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 if(response.isSuccessful()){
-                    character = response.body();
+                    Character character = response.body();
+                    setData(character);
                 }
             }
 
@@ -105,16 +109,32 @@ public class ProfileActivity extends AppCompatActivity {
 
         String text = null;
         if(c.getObject1_name()!=null){
-            text = text + c.getObject1_name() + ",";
+            if(text!=null) {
+                text = text + c.getObject1_name() + ",";
+            }
+            else{
+                text = c.getObject1_name();
+            }
         }
         if(c.getObject2_name()!=null){
-            text = text + c.getObject2_name() + ",";
+            if(text!=null) {
+                text = text + c.getObject2_name() + ",";
+            }
+            else{
+                text = c.getObject2_name();
+            }
         }
         if(c.getObject3_name()!=null){
-            text = text + c.getObject3_name() + ",";
+            if(text!=null){
+                text = text + c.getObject3_name() + ",";
+            }
+            else{
+                text = c.getObject3_name();
+            }
+
         }
         objectsText.setText(text);
-
+        moneyText.setText(Double.toString(c.getMoney()));
         pointsText.setText(Double.toString(c.getPoints()));
 
         //falta mapa

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,10 +27,11 @@ public class LogInActivity extends AppCompatActivity {
     //Necessitem la informació de la persona
     String username;
     String password;
-    User userLogged;
 
     TextView usernameEditText;
     TextView passwordEditText;
+
+    SharedPreferences myPreferences;
 
 
     UserService API;
@@ -70,15 +72,13 @@ public class LogInActivity extends AppCompatActivity {
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);
 
-        Intent intent = new Intent(LogInActivity.this, ProfileActivity.class);
-        intent.putExtra("character name", userLogged.getCharactername());
-        LogInActivity.this.startActivity(intent);
     }
 
     public void doLoginCall(String username, String password){
 
         Credentials credentials = new Credentials(username,password);
         Call<User> call = API.login(credentials);
+
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -86,7 +86,9 @@ public class LogInActivity extends AppCompatActivity {
 
                 if (response.code()!=404){
                     User res = response.body();
-                    setUserLogged(res);
+                    saveUserLogged(res);
+                    openProfileActivity();
+
                 }
                 else{
                     Context context = getApplicationContext();
@@ -109,10 +111,22 @@ public class LogInActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+
+
     }
 
-    public void setUserLogged(User userLogged){
-        this.userLogged = userLogged;
+    public void saveUserLogged(User user){
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name",user.getName());
+        editor.putString("password",user.getPassword());
+        editor.putString("charactername",user.getCharactername());
+        editor.commit();
+    }
+
+    public void openProfileActivity(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
     }
 
 }
