@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -96,8 +97,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
     }
 
     public void goClick(View view){
-        String pokemon=null;
-        String avatar = null;
+        String pokemon;
+        String avatar;
 
         if(pokemon1Bt.isChecked()){
             pokemon = "Charmander";
@@ -124,7 +125,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
         else{
             avatar = "may";
         }
-        Character character = new Character("name",avatar,0.,0.,pokemon,null,null,null,null,null);
+        Character character = new Character(name,avatar,500.0,0.0,pokemon,null,null,null,null,null);
+        Log.d("CharacterCreation",pokemon);
         doAPIcall(character);
 
     }
