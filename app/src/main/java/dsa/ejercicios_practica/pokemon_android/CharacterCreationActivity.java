@@ -126,7 +126,6 @@ public class CharacterCreationActivity extends AppCompatActivity {
             avatar = "may";
         }
         Character character = new Character(name,avatar,500.0,0.0,pokemon,null,null,null,null,null);
-        Log.d("CharacterCreation",pokemon);
         doAPIcall(character);
 
     }

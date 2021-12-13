@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -81,6 +82,15 @@ public class AllObjectsActivity extends AppCompatActivity {
                 if(!response.body().isEmpty()) {
                     objectList = response.body();
                     mAdapter.setData(objectList);
+
+                    SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+                    mAdapter.SetOnItemClickListener(new AdapterObject.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(int position) {
+                            //TODO NEED TO IMPLEMENT PLAYER STATS DETAIL ACTIVITY
+                            buyAnItem(position,sharedPref.getString("charactername",null));
+                        }
+                    });
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
@@ -106,6 +116,7 @@ public class AllObjectsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 Toast toast;
+                Log.d("Shop",response.message());
                 if(response.code() == 201){
                     toast = Toast.makeText(AllObjectsActivity.this, "Compra realizada", Toast.LENGTH_SHORT);
                 }
