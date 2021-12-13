@@ -105,11 +105,18 @@ public class AllObjectsActivity extends AppCompatActivity {
         call.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
-
+                Toast toast;
+                if(response.code() == 201){
+                    toast = Toast.makeText(AllObjectsActivity.this, "Compra realizada", Toast.LENGTH_SHORT);
+                }
+                else{
+                    toast = Toast.makeText(AllObjectsActivity.this, "Error en la compra", Toast.LENGTH_SHORT);
+                }
+                toast.show();
             }
             @Override
             public void onFailure(Call<Character> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
