@@ -12,10 +12,9 @@ import retrofit2.http.POST;
 
 public interface ObjectService {
     final String BASE_URL = "http://10.0.2.2:8080";
-    @GET("/dsaApp/Store/ShowProducts")
+    @GET("/dsaApp/endpoint/Store/ShowProducts")
     Call<List<Objects>> getObjects();
-
-    @POST("dsaApp/Store/Shopping")
+    @POST("dsaApp/endpoint/Store/Shopping")
     Call<Character> buyObject(@Body ObjectWithCharacter objectWithCharacter);
 
 }
