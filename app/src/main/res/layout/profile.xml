@@ -58,6 +58,20 @@
         app:layout_constraintTop_toBottomOf="@+id/mapProfileImage"
         app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/storeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:onClick="storeButtonClick"
+        android:text="BUY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.204"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapProfileImage"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/objectsProfileText"
         android:layout_width="wrap_content"
@@ -186,13 +200,12 @@
         android:id="@+id/pokemon2ProfileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pokemonsProfileText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/pokemon1ProfileText"
-        app:layout_constraintTop_toBottomOf="@+id/pokemon1ProfileText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/pokemonsProfileText"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonsProfileText"
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/pokemon3ProfileText"

@@ -1,8 +1,14 @@
 package dsa.ejercicios_practica.pokemon_android;
 
+import static dsa.services.CharacterService.BASE_URL;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +19,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import dsa.models.Character;
+import dsa.models.ObjectWithCharacter;
 import dsa.models.Objects;
 import dsa.services.ObjectService;
 import retrofit2.Call;
@@ -27,7 +35,6 @@ public class AllObjectsActivity extends AppCompatActivity {
     private AdapterObject mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     ObjectService API;
     List<Objects>objectList;
 
@@ -36,12 +43,16 @@ public class AllObjectsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_objects);
 
+        layoutManager = new LinearLayoutManager(this);
+        mAdapter = new AdapterObject();
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new AdapterObject();
         recyclerView.setAdapter(mAdapter);
+
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        String charactername = sharedPref.getString("charactername",null);
+
 
         createAPI();
         doApiCall();
@@ -53,7 +64,7 @@ public class AllObjectsActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(ObjectService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -66,12 +77,15 @@ public class AllObjectsActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Objects>>() {
             @Override
             public void onResponse(Call<List<Objects>> call, Response<List<Objects>> response) {
+
                 if(!response.body().isEmpty()) {
                     objectList = response.body();
                     mAdapter.setData(objectList);
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
+                    Intent intent = new Intent(AllObjectsActivity.this, ProfileActivity.class);
+                    startActivity(intent);
                     Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllObjectsActivity.this,"Lista de objetos vacía",Toast.LENGTH_SHORT);
                     toast.show();
                 }
@@ -83,4 +97,21 @@ public class AllObjectsActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void buyAnItem(int position, String name){
+        Character ch = new Character(name,null,null,null,null,null,null,null,null,null);
+        ObjectWithCharacter objectWithCharacter = new ObjectWithCharacter(objectList.get(position),ch);
+        Call<Character> call = API.buyObject(objectWithCharacter);
+        call.enqueue(new Callback<Character>() {
+            @Override
+            public void onResponse(Call<Character> call, Response<Character> response) {
+
+            }
+            @Override
+            public void onFailure(Call<Character> call, Throwable t) {
+
+            }
+        });
+    }
+
 }

@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Character;
+import dsa.models.User;
 import dsa.services.CharacterService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -158,5 +159,11 @@ public class ProfileActivity extends AppCompatActivity {
     public void playClick(View v){
         //obrir la partida
     }
+
+    public void storeButtonClick(View v){
+        Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
+        startActivity(intent);
+    }
+
 
 }

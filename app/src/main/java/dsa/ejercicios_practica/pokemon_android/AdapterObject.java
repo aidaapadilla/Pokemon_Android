@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -16,9 +17,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import dsa.models.Objects;
+import dsa.services.ObjectService;
 
 public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder>{
     private List<Objects> objectList;
+
+    private RecyclerView recyclerView;
+    private AdapterObject mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+    private OnItemClickListener mListener;
+    //Through this we get the click and the position to our main activity
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+    //for When we call the OnClick Method from main
+    public void SetOnItemClickListener(OnItemClickListener listener){
+        mListener = listener ;
+    }
 
     //creamos una plantilla de objeto
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -29,13 +45,21 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
         public ImageView imgObject;
         public View layout;
 
-        public ViewHolder(View v) {
+        public ViewHolder(View v,OnItemClickListener listener) {
             super(v);
             layout = v;
             txtNameObject = (TextView) v.findViewById(R.id.nameObject);
             txtDescriptionObject = (TextView) v.findViewById(R.id.descriptionObject);
             txtPriceObject = (TextView) v.findViewById(R.id.priceObject);
             imgObject = (ImageView) v.findViewById(R.id.imgObject);
+
+            itemView.findViewById(R.id.buyButtonObject).setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    listener.onItemClick(position);
+                }
+            });
         }
     }
 
@@ -77,10 +101,9 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
         // create a new view
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
-        View v =
-                inflater.inflate(R.layout.row_layout_object, parent, false);
+        View v = inflater.inflate(R.layout.row_layout_object, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        AdapterObject.ViewHolder vh = new AdapterObject.ViewHolder(v);
+        AdapterObject.ViewHolder vh = new AdapterObject.ViewHolder(v,mListener);
         return vh;
     }
 
