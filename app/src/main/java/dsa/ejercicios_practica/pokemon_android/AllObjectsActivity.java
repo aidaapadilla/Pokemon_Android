@@ -4,12 +4,15 @@ import static dsa.services.CharacterService.BASE_URL;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -87,7 +90,6 @@ public class AllObjectsActivity extends AppCompatActivity {
                     mAdapter.SetOnItemClickListener(new AdapterObject.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            //TODO NEED TO IMPLEMENT PLAYER STATS DETAIL ACTIVITY
                             buyAnItem(position,sharedPref.getString("charactername",null));
                         }
                     });
@@ -130,6 +132,20 @@ public class AllObjectsActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // do something on back.
+        Intent intent = new Intent(AllObjectsActivity.this, ProfileActivity.class);
+        startActivity(intent);
+        final Dialog dialog = new Dialog(this);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        dialog.dismiss();
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
+        dialog.show();
     }
 
 }

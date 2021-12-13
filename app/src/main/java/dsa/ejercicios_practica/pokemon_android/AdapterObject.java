@@ -53,6 +53,7 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
             txtDescriptionObject = (TextView) v.findViewById(R.id.descriptionObject);
             txtPriceObject = (TextView) v.findViewById(R.id.priceObject);
             imgObject = (ImageView) v.findViewById(R.id.imgObject);
+            String txt =  txtNameObject.toString();
 
             itemView.findViewById(R.id.buyButtonObject).setOnClickListener(new OnClickListener() {
                 @Override
@@ -119,7 +120,11 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
         holder.txtDescriptionObject.setText(object.getDescription());
         //Bitmap bitmap = StringToBitmap(object.getImage());
         //holder.imgObject.setImageBitmap(bitmap);
-
+        if(object.getName().contains("Potion")){
+            holder.imgObject.setImageResource(R.drawable.potion1);
+        }else if(object.getName().contains("PokeBall")){
+            holder.imgObject.setImageResource(R.drawable.pokeball);
+        }
         holder.txtNameObject.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
