@@ -66,9 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
         String email = emailText.getText().toString();
         String nickname = nicknameText.getText().toString();
-
         User user = new User(username,password,email,nickname);
-
         doAPIcall(user);
 
     }

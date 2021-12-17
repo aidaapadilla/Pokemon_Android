@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-<<<<<<< HEAD
 import android.content.Context;
 import android.content.SharedPreferences;
-=======
 import android.content.Intent;
->>>>>>> 9360f31fad1ffc516cf3d29dd397db91ee1ebd88
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
