@@ -28,7 +28,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
 
     CharacterService API;
 
-    String name;
+    String charactername;
 
     ImageView avatar1;
     ImageView avatar2;
@@ -88,8 +88,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
-        name = sharedPref.getString("charactername",null);
-        String text = "Hello "+name+"!";
+        charactername = sharedPref.getString("charactername",null);
+        String text = "Hello "+ charactername +"!";
         title.setText(text);
 
         createAPI();
@@ -118,7 +118,9 @@ public class CharacterCreationActivity extends AppCompatActivity {
         else if(avatar3Bt.isChecked()){
             avatar = "james";
         }
-        Character character = new Character(name,avatar,0.,0.,pokemon,null,null,null,null,null);
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        String username = sharedPref.getString("name",null);
+        Character character = new Character(charactername,username,avatar,"level1",0.,0.,pokemon,null,null,null,null,null);
         doAPIcall(character);
 
     }
