@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -96,8 +97,8 @@ public class CharacterCreationActivity extends AppCompatActivity {
     }
 
     public void goClick(View view){
-        String pokemon=null;
-        String avatar = null;
+        String pokemon;
+        String avatar;
 
         if(pokemon1Bt.isChecked()){
             pokemon = "Charmander";
@@ -107,6 +108,9 @@ public class CharacterCreationActivity extends AppCompatActivity {
         }
         else if(pokemon3Bt.isChecked()){
             pokemon = "Bulbasaur";
+        }
+        else{
+            pokemon = "Charmander";
         }
 
         if(avatar1Bt.isChecked()){
@@ -118,9 +122,13 @@ public class CharacterCreationActivity extends AppCompatActivity {
         else if(avatar3Bt.isChecked()){
             avatar = "james";
         }
+        else{
+            avatar = "may";
+        }
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String username = sharedPref.getString("name",null);
-        Character character = new Character(charactername,username,avatar,"level1",0.,0.,pokemon,null,null,null,null,null);
+        Character character = new Character(charactername,username,avatar,"level1",500.0,0.0,pokemon,null,null,null,null,null);
+
         doAPIcall(character);
 
     }
@@ -130,15 +138,30 @@ public class CharacterCreationActivity extends AppCompatActivity {
         call.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
-                if (response.code()!=500) {
+                if (response.code()==201) {
                     openProfileActivity();
                 }
-                else{
+                else if(response.code()==500){
                     Context context = getApplicationContext();
                     String text = "Error in creating the character";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }else if(response.code()==502) {
+                    Context context = getApplicationContext();
+                    String text = "Error in character form";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else{
+                    Context context = getApplicationContext();
+                    String text = "Error";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text + response.code(), duration);
                     toast.show();
                 }
             }

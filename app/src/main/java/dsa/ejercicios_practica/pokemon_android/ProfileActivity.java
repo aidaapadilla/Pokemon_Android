@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Character;
+import dsa.models.User;
 import dsa.services.CharacterService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -112,39 +113,39 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         characternameText.setText(c.getName());
-        if(c.getPokemon1_name()!=null) {
-            pokemon1Text.setText(c.getPokemon1_name());
+        if(c.getPokemon1name()!=null) {
+            pokemon1Text.setText(c.getPokemon1name());
         }
-        if(c.getPokemon2_name()!=null) {
-            pokemon2Text.setText(c.getPokemon2_name());
+        if(c.getPokemon2name()!=null) {
+            pokemon2Text.setText(c.getPokemon2name());
         }
-        if(c.getPokemon3_name()!=null) {
-            pokemon3Text.setText(c.getPokemon3_name());
+        if(c.getPokemon3name()!=null) {
+            pokemon3Text.setText(c.getPokemon3name());
         }
 
         String text = null;
-        if(c.getObject1_name()!=null){
+        if(c.getObject1name()!=null){
             if(text!=null) {
-                text = text + c.getObject1_name() + ",";
+                text = text + c.getObject1name() + ",";
             }
             else{
-                text = c.getObject1_name() + ",";
+                text = c.getObject1name() + ",";
             }
         }
-        if(c.getObject2_name()!=null){
+        if(c.getObject2name()!=null){
             if(text!=null) {
-                text = text + c.getObject2_name() + ",";
+                text = text + c.getObject2name() + ",";
             }
             else{
-                text = c.getObject2_name() + ",";
+                text = c.getObject2name() + ",";
             }
         }
-        if(c.getObject3_name()!=null){
+        if(c.getObject3name()!=null){
             if(text!=null){
-                text = text + c.getObject3_name() + ",";
+                text = text + c.getObject3name() + ",";
             }
             else{
-                text = c.getObject3_name() + ",";
+                text = c.getObject3name() + ",";
             }
 
         }
@@ -158,5 +159,11 @@ public class ProfileActivity extends AppCompatActivity {
     public void playClick(View v){
         //obrir la partida
     }
+
+    public void storeButtonClick(View v){
+        Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
+        startActivity(intent);
+    }
+
 
 }

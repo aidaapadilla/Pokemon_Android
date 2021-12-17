@@ -24,7 +24,6 @@ public class Character {
         setUsername(username);
         setMoney(money);
         setPoints(points);
-
         setPokemon1name(p1_name);
         setPokemon2name(p2_name);
         setPokemon3name(p3_name);
