@@ -149,6 +149,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
 
         }
+        nameMapText.setText(c.getMap());
         objectsText.setText(text);
         moneyText.setText(Double.toString(c.getMoney()));
         pointsText.setText(Double.toString(c.getPoints()));
