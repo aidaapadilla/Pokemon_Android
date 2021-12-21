@@ -110,6 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("name",user.getName());
         editor.putString("password",user.getPassword());
+        editor.putString("email",user.getEmail());
         editor.putString("charactername",user.getCharactername());
         editor.commit();
     }

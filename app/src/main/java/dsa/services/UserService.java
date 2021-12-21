@@ -13,4 +13,6 @@ public interface UserService{
     Call<User> register(@Body User user); //Register??
     @POST("/dsaApp/endpoint/login")
     Call<User> login(@Body Credentials credentials);
+    @PUT("/dsaApp/endpoint/updateuser")
+    Call<User> update(@Body User user);
 }

@@ -57,7 +57,6 @@ public class AllObjectsActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String charactername = sharedPref.getString("charactername",null);
 
-
         createAPI();
         doApiCall();
     }

@@ -19,14 +19,17 @@
             android:name=".AllObjectsActivity"
             android:exported="true" />
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".AllPokemonsActivity"
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LogInActivity"
             android:exported="true">

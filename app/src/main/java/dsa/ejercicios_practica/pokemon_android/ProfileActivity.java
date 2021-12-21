@@ -157,6 +157,11 @@ public class ProfileActivity extends AppCompatActivity {
         //falta mapa
     }
 
+    public void editClick(View v){
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
+    }
+
     public void playClick(View v){
         //obrir la partida
     }

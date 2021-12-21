@@ -33,7 +33,6 @@ public class LogInActivity extends AppCompatActivity {
 
     SharedPreferences myPreferences;
 
-
     UserService API;
 
     public void createAPI(){
@@ -111,8 +110,6 @@ public class LogInActivity extends AppCompatActivity {
                 toast.show();
             }
         });
-
-
     }
 
     public void saveUserLogged(User user){
@@ -120,6 +117,7 @@ public class LogInActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("name",user.getName());
         editor.putString("password",user.getPassword());
+        editor.putString("email",user.getEmail());
         editor.putString("charactername",user.getCharactername());
         editor.commit();
     }
