@@ -218,15 +218,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/editprofileButton"
+        android:id="@+id/optionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="editClick"
-        android:text="Edit Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:onClick="optionsClick"
+        android:text="Options"
+        app:layout_constraintBottom_toBottomOf="@+id/storeButton"
         app:layout_constraintEnd_toStartOf="@+id/playButton"
         app:layout_constraintStart_toEndOf="@+id/storeButton"
-        app:layout_constraintTop_toTopOf="@+id/storeButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/storeButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

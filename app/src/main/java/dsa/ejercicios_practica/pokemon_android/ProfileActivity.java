@@ -156,8 +156,8 @@ public class ProfileActivity extends AppCompatActivity {
         //falta mapa
     }
 
-    public void editClick(View v){
-        Intent intent = new Intent(this, EditProfileActivity.class);
+    public void optionsClick(View view){
+        Intent intent = new Intent(ProfileActivity.this, OptionsActivity.class);
         startActivity(intent);
     }
 

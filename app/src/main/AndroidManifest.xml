@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Pokemon_Android"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".OptionsActivity"
+            android:exported="true" />
+        <activity
             android:name=".LogInActivity"
             android:exported="true" />
         <activity
@@ -25,7 +28,7 @@
             android:name=".EditProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".AllPokemonsActivity"
+            android:name=".PokedexActivity"
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"

@@ -15,4 +15,6 @@ public interface UserService{
     Call<User> login(@Body Credentials credentials);
     @PUT("/dsaApp/endpoint/updateuser")
     Call<User> update(@Body User user);
+    @PUT("/dsaApp/endpoint/delete/{username}")
+    Call<>
 }

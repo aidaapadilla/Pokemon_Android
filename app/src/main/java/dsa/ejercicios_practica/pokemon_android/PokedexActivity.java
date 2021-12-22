@@ -21,7 +21,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AllPokemonsActivity extends AppCompatActivity {
+public class PokedexActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AdapterPokemon mAdapter;
@@ -33,7 +33,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_pokemons);
+        setContentView(R.layout.activity_pokedex);
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -70,7 +70,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
                     //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
-                    Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllPokemonsActivity.this,"Lista de pokemons vacía",Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(PokedexActivity.this,"Lista de pokemons vacía",Toast.LENGTH_SHORT);
                     toast.show();
                     //System.out.println(response.errorBody());
                 }
@@ -78,7 +78,7 @@ public class AllPokemonsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Pokemons>> call, Throwable t) {
-                Toast toast = Toast.makeText(dsa.ejercicios_practica.pokemon_android.AllPokemonsActivity.this,"ERROR DE CONEXIÓN, no se ha podido realizar la petición.",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(PokedexActivity.this,"ERROR DE CONEXIÓN, no se ha podido realizar la petición.",Toast.LENGTH_SHORT);
                 toast.show();
             }
         });
