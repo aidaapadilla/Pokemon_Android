@@ -63,6 +63,10 @@ public class OptionsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void signOutClick(View v){
+        signOut();
+    }
+
     public void createAPI(){
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -79,14 +83,11 @@ public class OptionsActivity extends AppCompatActivity {
     public void doAPIdeleteCall(String name){
         Call<User> call = API.deleteUser(name);
         call.enqueue(new Callback<User>() {
+
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if(response.isSuccessful()){
-                    SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
-                    sharedPref.edit().clear();
-                    sharedPref.edit().commit();
-                    Intent intent = new Intent(OptionsActivity.this, LogInActivity.class);
-                    startActivity(intent);
+                if(response.code()==200){
+                    signOut();
                 }
             }
 
@@ -96,5 +97,12 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void signOut(){
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        sharedPref.edit().clear().commit();
+        Intent intent = new Intent(OptionsActivity.this, LogInActivity.class);
+        startActivity(intent);
     }
 }
