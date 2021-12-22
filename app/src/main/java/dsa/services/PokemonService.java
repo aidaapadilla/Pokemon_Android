@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 
 public interface PokemonService {
-    @GET("/pokemons")
+    @GET("/dsaApp/endpoint/pokemons")
     Call<List<Pokemons>> getPokemons();
     //Els gets diria que no poden portar body
 }

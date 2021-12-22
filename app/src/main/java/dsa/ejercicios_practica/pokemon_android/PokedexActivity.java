@@ -15,6 +15,7 @@ import java.util.List;
 
 import dsa.models.Pokemons;
 import dsa.services.PokemonService;
+import dsa.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +28,6 @@ public class PokedexActivity extends AppCompatActivity {
     private AdapterPokemon mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
     PokemonService API;
     List<Pokemons>pokemonList;
     @Override
@@ -52,7 +52,7 @@ public class PokedexActivity extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(UserService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -67,12 +67,10 @@ public class PokedexActivity extends AppCompatActivity {
                 if(!response.body().isEmpty()) {
                     pokemonList=response.body();
                     mAdapter.setData(pokemonList);
-                    //tracksList.forEach(track -> System.out.println(track.title));
                 }
                 else {
                     Toast toast = Toast.makeText(PokedexActivity.this,"Lista de pokemons vacía",Toast.LENGTH_SHORT);
                     toast.show();
-                    //System.out.println(response.errorBody());
                 }
             }
 

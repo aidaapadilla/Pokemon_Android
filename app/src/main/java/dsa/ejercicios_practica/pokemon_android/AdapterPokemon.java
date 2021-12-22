@@ -35,7 +35,6 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
             layout = v;
             txtNamePokemon = (TextView) v.findViewById(R.id.namePokemon);
             txtTypePokemon = (TextView) v.findViewById(R.id.typePokemon);
-            //Llista atacs de cada pokemon
             txtAttacksPokemon = (TextView) v.findViewById(R.id.attackListPokemon);
             imgPokemon = (ImageView) v.findViewById(R.id.imgPokemon);
         }
@@ -91,6 +90,19 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         Pokemons pokemon = pokemonList.get(position);
         holder.txtNamePokemon.setText(pokemon.getName());
         holder.txtTypePokemon.setText(pokemon.getType());
+        String text = null;
+        if(pokemon.getAttack1_name()!=null){
+            text = pokemon.getAttack1_name();
+        }
+        if(pokemon.getAttack2_name()!=null){
+            if(text!=null) {
+                text = "," + text + pokemon.getAttack2_name();
+            }
+            else{
+                text = pokemon.getAttack2_name();
+            }
+        }
+        holder.txtAttacksPokemon.setText(text);
         //Bitmap bitmap = StringToBitmap(pokemon.getImage());
         //List<Attack> attackList = pokemon.getAtackList();
         //String attackString = attackList.get(0).getName();
@@ -99,12 +111,16 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         //holder.imgPokemon.setImageBitmap(bitmap);
 
         //Funcion que al clicar el nombre ejecuta alguna funcion que falta rellenar
+        /*
         holder.txtNamePokemon.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 //sendMessage(holder.getAdapterPosition(),v);
             }
+
         });
+
+         */
 
     }
 
