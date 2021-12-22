@@ -2,7 +2,9 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,6 +12,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import dsa.models.Character;
+import dsa.models.User;
 import dsa.services.CharacterService;
 import dsa.services.UserService;
 import retrofit2.Call;
@@ -50,7 +53,9 @@ public class OptionsActivity extends AppCompatActivity {
 
     public void deleteClick(View v){
         createAPI();
-
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        String username = sharedPref.getString("name",null);
+        doAPIdeleteCall(username);
     }
 
     public void closeClick(View v){
@@ -71,19 +76,22 @@ public class OptionsActivity extends AppCompatActivity {
         API = retrofit.create(UserService.class);
     }
 
-    public void doAPIcall(String name){
-        Call<Character> call = API.getCharacter(name);
-        call.enqueue(new Callback<Character>() {
+    public void doAPIdeleteCall(String name){
+        Call<User> call = API.deleteUser(name);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Character> call, Response<Character> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
-                    Character character = response.body();
-                    setData(character);
+                    SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+                    sharedPref.edit().clear();
+                    sharedPref.edit().commit();
+                    Intent intent = new Intent(OptionsActivity.this, LogInActivity.class);
+                    startActivity(intent);
                 }
             }
 
             @Override
-            public void onFailure(Call<Character> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 t.printStackTrace();
             }
         });

@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface UserService{
     final String BASE_URL = "http://147.83.7.204:8080";
@@ -16,5 +17,5 @@ public interface UserService{
     @PUT("/dsaApp/endpoint/updateuser")
     Call<User> update(@Body User user);
     @PUT("/dsaApp/endpoint/delete/{username}")
-    Call<>
+    Call<User> deleteUser(@Path("username") String name);
 }

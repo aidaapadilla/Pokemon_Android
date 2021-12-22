@@ -56,6 +56,8 @@ public class LogInActivity extends AppCompatActivity {
         context = this;
         sharedPref = getSharedPreferences("userlogged",context.MODE_PRIVATE);
 
+        Intent intent = getIntent();
+
         usernameEditText = findViewById(R.id.characternameProfileText);
         passwordEditText = findViewById(R.id.passwordEditText);
 
