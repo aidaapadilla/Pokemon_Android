@@ -2,7 +2,9 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -58,6 +60,13 @@ public class OptionsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void signOutClick(View v){
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        sharedPref.edit().clear().commit();
+        Intent intent = new Intent(OptionsActivity.this, LogInActivity.class);
+        startActivity(intent);
+    }
+
     public void createAPI(){
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -70,7 +79,7 @@ public class OptionsActivity extends AppCompatActivity {
 
         API = retrofit.create(UserService.class);
     }
-
+    /*
     public void doAPIcall(String name){
         Call<Character> call = API.getCharacter(name);
         call.enqueue(new Callback<Character>() {
@@ -89,4 +98,5 @@ public class OptionsActivity extends AppCompatActivity {
         });
 
     }
+    */
 }

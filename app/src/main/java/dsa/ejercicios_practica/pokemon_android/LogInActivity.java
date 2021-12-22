@@ -115,7 +115,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void saveUserLogged(User user){
-        SharedPreferences sharedPref = getPreferences(context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("userlogged", context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("name",user.getName());
         editor.putString("password",user.getPassword());
