@@ -101,7 +101,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void setData(Character c){
 
-
         if(c.getAvatar().equals("may")) {
             avatarImg.setImageResource(R.drawable.may);
         }
@@ -170,6 +169,5 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
         startActivity(intent);
     }
-
 
 }

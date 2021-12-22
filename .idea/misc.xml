@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/drawable/splashscreen.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/layout/activity_splash_screen.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/layout/editprofile.xml" value="0.264" />
         <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/layout/login.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Jordi/DSA/Proyecto/Pokemon_Android/app/src/main/res/layout/profile.xml" value="0.4" />

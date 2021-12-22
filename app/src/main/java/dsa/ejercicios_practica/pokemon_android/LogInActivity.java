@@ -31,7 +31,8 @@ public class LogInActivity extends AppCompatActivity {
     TextView usernameEditText;
     TextView passwordEditText;
 
-    SharedPreferences myPreferences;
+    Context context;
+    SharedPreferences sharedPref;
 
     UserService API;
 
@@ -52,6 +53,8 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        context = this;
+        sharedPref = getSharedPreferences("userlogged",context.MODE_PRIVATE);
 
         usernameEditText = findViewById(R.id.characternameProfileText);
         passwordEditText = findViewById(R.id.passwordEditText);
@@ -93,7 +96,6 @@ public class LogInActivity extends AppCompatActivity {
                     Context context = getApplicationContext();
                     String text = "User not found, try again!";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
@@ -113,7 +115,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void saveUserLogged(User user){
-        SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getPreferences(context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("name",user.getName());
         editor.putString("password",user.getPassword());
