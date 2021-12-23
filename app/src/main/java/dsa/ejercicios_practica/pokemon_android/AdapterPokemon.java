@@ -88,39 +88,38 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Pokemons pokemon = pokemonList.get(position);
-        holder.txtNamePokemon.setText(pokemon.getName());
+        String namelevel = pokemon.getName() + " " + Double.toString(pokemon.getLevel());
+        holder.txtNamePokemon.setText(namelevel);
         holder.txtTypePokemon.setText(pokemon.getType());
         String text = null;
-        if(pokemon.getAttack1_name()!=null){
-            text = pokemon.getAttack1_name();
+        if(pokemon.getAttack1name()!=null){
+            text = pokemon.getAttack1name();
         }
-        if(pokemon.getAttack2_name()!=null){
+        if(pokemon.getAttack2name()!=null){
             if(text!=null) {
-                text = "," + text + pokemon.getAttack2_name();
+                text = text + "," + pokemon.getAttack2name();
             }
             else{
-                text = pokemon.getAttack2_name();
+                text = pokemon.getAttack2name();
             }
         }
         holder.txtAttacksPokemon.setText(text);
-        //Bitmap bitmap = StringToBitmap(pokemon.getImage());
-        //List<Attack> attackList = pokemon.getAtackList();
-        //String attackString = attackList.get(0).getName();
-        //for(Attack a:attackList){attackString = (attackString + "," + a.getName()); }
-        //holder.txtAttacksPokemon.setText(attackString);
-        //holder.imgPokemon.setImageBitmap(bitmap);
 
-        //Funcion que al clicar el nombre ejecuta alguna funcion que falta rellenar
-        /*
-        holder.txtNamePokemon.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //sendMessage(holder.getAdapterPosition(),v);
-            }
-
-        });
-
-         */
+        if(pokemon.getName().equals("Charmander")){
+            holder.imgPokemon.setImageResource(R.drawable.charmander);
+        }
+        else if(pokemon.getName().equals("Squirtle")){
+            holder.imgPokemon.setImageResource(R.drawable.squirtle);
+        }
+        else if(pokemon.getName().equals("Bulbasaur")){
+            holder.imgPokemon.setImageResource(R.drawable.bulbasaur);
+        }
+        else if(pokemon.getName().equals("Glaceon")){
+            holder.imgPokemon.setImageResource(R.drawable.glaceon);
+        }
+        else if(pokemon.getName().equals("Geodude")){
+            holder.imgPokemon.setImageResource(R.drawable.geodude);
+        }
 
     }
 

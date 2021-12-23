@@ -7,46 +7,64 @@
 
     <ImageView
         android:id="@+id/imgPokemon"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="fill_parent"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="283dp"
         android:layout_marginRight="6dip"
         android:contentDescription="TODO"
         android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/namePokemon"
-        android:layout_width="315dp"
+        android:layout_width="270dp"
         android:layout_height="33dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="130dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="6dp"
-        android:text="Name" />
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Name"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/typePokemon"
-        android:layout_width="84dp"
+        android:layout_width="100dp"
         android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="243dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="210dp"
         android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/imgPokemon"
-        android:text="type" />
+        android:fontFamily="monospace"
+        android:text="type"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/attackListPokemon"
-        android:layout_width="234dp"
+        android:layout_width="200dp"
         android:layout_height="62dp"
-        android:layout_below="@+id/namePokemon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginStart="202dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="8dp"
-        android:text="attackList" />
+        android:fontFamily="monospace"
+        android:text="attackList"
+        android:textSize="18sp" />
 
 </RelativeLayout>
