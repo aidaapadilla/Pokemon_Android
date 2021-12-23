@@ -2,6 +2,7 @@ package dsa.ejercicios_practica.pokemon_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -64,15 +65,17 @@ public class PokedexActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Pokemons>>() {
             @Override
             public void onResponse(Call<List<Pokemons>> call, Response<List<Pokemons>> response) {
-                if(!response.body().isEmpty()) {
+                if(response.code()==200) {
                     pokemonList=response.body();
                     mAdapter.setData(pokemonList);
                 }
                 else {
                     Toast toast = Toast.makeText(PokedexActivity.this,"Lista de pokemons vacía",Toast.LENGTH_SHORT);
+                    Context context = getApplicationContext();
+                    String text = "Error Pokemons no encontrados";
+                    int duration = Toast.LENGTH_SHORT;
                     toast.show();
-                }
-            }
+                }}
 
             @Override
             public void onFailure(Call<List<Pokemons>> call, Throwable t) {

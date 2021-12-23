@@ -134,7 +134,7 @@ public class AllObjectsActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        // do something on back.
+        // Botón atrás hacia el perfil
         Intent intent = new Intent(AllObjectsActivity.this, ProfileActivity.class);
         startActivity(intent);
         final Dialog dialog = new Dialog(this);

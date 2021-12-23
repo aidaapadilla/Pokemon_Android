@@ -100,37 +100,28 @@ public class CharacterCreationActivity extends AppCompatActivity {
         String pokemon;
         String avatar;
 
-        if(pokemon1Bt.isChecked()){
-            pokemon = "Charmander";
-        }
-        else if(pokemon2Bt.isChecked()){
-            pokemon = "Squirtle";
-        }
-        else if(pokemon3Bt.isChecked()){
-            pokemon = "Bulbasaur";
-        }
+        if (pokemon1Bt.isChecked()){
+            pokemon = "Charmander"; }
+        else if (pokemon2Bt.isChecked()){
+            pokemon = "Squirtle"; }
+        else if (pokemon3Bt.isChecked()){
+            pokemon = "Bulbasaur"; }
         else{
-            pokemon = "Charmander";
-        }
+            pokemon = "Charmander"; }
 
-        if(avatar1Bt.isChecked()){
-            avatar = "may";
-        }
+        if (avatar1Bt.isChecked()){
+            avatar = "may"; }
         else if(avatar2Bt.isChecked()){
-            avatar = "red";
-        }
+            avatar = "red"; }
         else if(avatar3Bt.isChecked()){
-            avatar = "james";
-        }
+            avatar = "james"; }
         else{
             avatar = "may";
         }
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String username = sharedPref.getString("name",null);
         Character character = new Character(charactername,username,avatar,"level1",500.0,0.0,pokemon,null,null,null,null,null);
-
         doAPIcall(character);
-
     }
 
     public void doAPIcall(Character character){
@@ -158,7 +149,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
                 }
                 else{
                     Context context = getApplicationContext();
-                    String text = "Error";
+                    String text = " Generic Error";
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text + response.code(), duration);

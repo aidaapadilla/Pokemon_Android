@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -85,10 +86,16 @@ public class ProfileActivity extends AppCompatActivity {
         call.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
-                if(response.isSuccessful()){
+                if(response.code()==200){
                     Character character = response.body();
-                    setData(character);
-                }
+                    setData(character);}
+                else{
+                    Context context = getApplicationContext();
+                    String text = "Error avatar no encontrado";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text + response.code(), duration);
+                    toast.show();}
             }
 
             @Override

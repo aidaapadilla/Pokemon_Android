@@ -1,5 +1,5 @@
 package dsa.models;
-
+// Creamos modelo porque en un POST no podemos mandar dos objetos guardados en el body
 public class ObjectWithCharacter {
     private Objects object;
     private Character character;
