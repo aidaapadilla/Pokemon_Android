@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -50,6 +51,9 @@ public class CharacterCreationActivity extends AppCompatActivity {
 
     TextView title;
 
+    ProgressBar progressBar;
+    View viewCharacter;
+
     public void createAPI(){
         Gson gson = new GsonBuilder()
                 .setLenient()
@@ -86,6 +90,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
         avatar3Bt = findViewById(R.id.avatar3RadioBt);
 
         title = findViewById(R.id.nameCharacterText);
+        progressBar = findViewById(R.id.progressBarCharacter);
 
         Intent intent = getIntent();
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
@@ -99,6 +104,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
     public void goClick(View view){
         String pokemon;
         String avatar;
+        viewCharacter = view;
 
         if (pokemon1Bt.isChecked()){
             pokemon = "Charmander"; }
@@ -121,6 +127,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String username = sharedPref.getString("name",null);
         Character character = new Character(charactername,username,avatar,"level1",500.0,0.0,pokemon,null,null,null,null,null);
+        progressBar.setVisibility(viewCharacter.VISIBLE);
         doAPIcall(character);
     }
 
@@ -136,24 +143,24 @@ public class CharacterCreationActivity extends AppCompatActivity {
                     Context context = getApplicationContext();
                     String text = "Error in creating the character";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    progressBar.setVisibility(viewCharacter.INVISIBLE);
                 }else if(response.code()==502) {
                     Context context = getApplicationContext();
                     String text = "Error in character form";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    progressBar.setVisibility(viewCharacter.INVISIBLE);
                 }
                 else{
                     Context context = getApplicationContext();
                     String text = " Generic Error";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text + response.code(), duration);
                     toast.show();
+                    progressBar.setVisibility(viewCharacter.INVISIBLE);
                 }
             }
 
@@ -163,9 +170,9 @@ public class CharacterCreationActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
                 String text = "Error in connectivity";
                 int duration = Toast.LENGTH_SHORT;
-
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                progressBar.setVisibility(viewCharacter.INVISIBLE);
             }
         });
     }

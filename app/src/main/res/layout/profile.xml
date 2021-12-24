@@ -225,4 +225,15 @@
         app:layout_constraintStart_toEndOf="@+id/storeButton"
         app:layout_constraintTop_toTopOf="@+id/storeButton" />
 
+    <ProgressBar
+        android:id="@+id/progressBarProfile"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/optionsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moneyUserProfileText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

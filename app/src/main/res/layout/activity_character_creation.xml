@@ -197,4 +197,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+    <ProgressBar
+        android:id="@+id/progressBarCharacter"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/goCharacterBt"
+        app:layout_constraintEnd_toStartOf="@+id/pokemonRadioGroup"
+        app:layout_constraintHorizontal_bias="0.671"
+        app:layout_constraintStart_toEndOf="@+id/avatar3imageView"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

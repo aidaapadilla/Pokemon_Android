@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,9 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView avatarImg;
     ImageView mapImg;
 
+    View viewprofile;
+
+    ProgressBar progressBar;
     TextView characternameText;
     TextView pokemon1Text;
     TextView pokemon2Text;
@@ -86,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
         call.enqueue(new Callback<Character>() {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
-                if(response.code()==200){
+                if(response.code()==201){
                     Character character = response.body();
                     setData(character);}
                 else{
@@ -95,7 +99,9 @@ public class ProfileActivity extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text + response.code(), duration);
-                    toast.show();}
+                    toast.show();
+                    progressBar.setVisibility(viewprofile.INVISIBLE);
+                }
             }
 
             @Override
@@ -172,7 +178,9 @@ public class ProfileActivity extends AppCompatActivity {
         //obrir la partida
     }
 
-    public void storeButtonClick(View v){
+    public void storeButtonClick(View view){
+        viewprofile=view;
+        progressBar.setVisibility(viewprofile.VISIBLE);
         Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
         startActivity(intent);
     }

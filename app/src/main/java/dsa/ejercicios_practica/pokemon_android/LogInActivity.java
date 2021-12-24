@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +29,11 @@ public class LogInActivity extends AppCompatActivity {
     String username;
     String password;
 
+    ProgressBar progressBar;
     TextView usernameEditText;
     TextView passwordEditText;
 
+    View viewLogin;
     Context context;
     SharedPreferences sharedPref;
 
@@ -58,6 +61,7 @@ public class LogInActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        progressBar = findViewById(R.id.progressBarLogin);
         usernameEditText = findViewById(R.id.characternameProfileText);
         passwordEditText = findViewById(R.id.passwordEditText);
 
@@ -66,15 +70,18 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void registerClick(View view){
+        viewLogin = view;
+        progressBar.setVisibility(viewLogin.VISIBLE);
         Intent intent = new Intent(view.getContext(), RegisterActivity.class);
         view.getContext().startActivity(intent);
     }
 
     public void login_click(View view) {
-
+        viewLogin =view;
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);
+        progressBar.setVisibility(viewLogin.VISIBLE);
 
     }
 
@@ -90,9 +97,17 @@ public class LogInActivity extends AppCompatActivity {
 
                 if (response.code()!=404){
                     User res = response.body();
-                    saveUserLogged(res);
-                    openProfileActivity();
-
+                    if (res.getPassword().equals(password)) {
+                        saveUserLogged(res);
+                        openProfileActivity();
+                    }
+                    else{
+                        String text = "Wrong password, try again!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        progressBar.setVisibility(viewLogin.INVISIBLE);
+                    }
                 }
                 else{
                     Context context = getApplicationContext();
@@ -100,6 +115,7 @@ public class LogInActivity extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    progressBar.setVisibility(viewLogin.INVISIBLE);
                 }
             }
 
@@ -109,7 +125,6 @@ public class LogInActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
                 String text = "Error";
                 int duration = Toast.LENGTH_SHORT;
-
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }

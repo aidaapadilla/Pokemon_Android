@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -30,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
     EditText usernameText;
     EditText passwordText;
     EditText nicknameText;
+
+    ProgressBar progressBar;
+    View viewRegister;
 
     public void createAPI(){
         Gson gson = new GsonBuilder()
@@ -54,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         usernameText = findViewById(R.id.usernameRegisterEditText);
         passwordText = findViewById(R.id.passwordRegisterEditText);
         nicknameText = findViewById(R.id.nicknameEditText);
+        progressBar = findViewById(R.id.progressBarRegister);
 
         createAPI();
     }
@@ -68,6 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
         String nickname = nicknameText.getText().toString();
         User user = new User(username,password,email,nickname);
         doAPIcall(user);
+        viewRegister=view;
+        progressBar.setVisibility(viewRegister.VISIBLE);
 
     }
 
@@ -86,9 +93,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Context context = getApplicationContext();
                     String text = "Error in register";
                     int duration = Toast.LENGTH_SHORT;
-
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    progressBar.setVisibility(viewRegister.INVISIBLE);
                 }
             }
 
@@ -98,9 +105,9 @@ public class RegisterActivity extends AppCompatActivity {
                 Context context = getApplicationContext();
                 String text = "Error in connectivity";
                 int duration = Toast.LENGTH_SHORT;
-
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                progressBar.setVisibility(viewRegister.INVISIBLE);
             }
         });
     }

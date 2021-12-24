@@ -8,15 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import dsa.models.Credentials;
 import dsa.models.User;
-import dsa.services.CharacterService;
 import dsa.services.UserService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +30,7 @@ public class EditProfileActivity extends AppCompatActivity{
     TextView password1Text;
     TextView password2Text;
 
+    Context context;
     String username;
     String email;
     String password;
@@ -39,7 +39,9 @@ public class EditProfileActivity extends AppCompatActivity{
     String password1;
     String password2;
 
-    TextView incorrectpwdText;
+    ProgressBar progressBar;
+
+    View viewEditProfile;
 
     public void createAPI(){
         Gson gson = new GsonBuilder()
@@ -71,20 +73,22 @@ public class EditProfileActivity extends AppCompatActivity{
         emailText = findViewById(R.id.emailText);
         password1Text = findViewById(R.id.password1Text);
         password2Text = findViewById(R.id.password2Text);
-        incorrectpwdText = findViewById(R.id.incorrectpwdText);
+        progressBar = findViewById(R.id.progressBarEditProfile);
+        context=this;
 
         createAPI();
 
     }
 
-    public void updateClick(View v) {
+    public void updateClick(View view) {
+        viewEditProfile =view;
         email = emailText.getText().toString();
         password1 = password1Text.getText().toString();
         password2 = password2Text.getText().toString();
+        progressBar.setVisibility(viewEditProfile.VISIBLE);
         if (password1.equals(password2)==true){
             User u = new User(username, password1, email,charactername);
             Call<User> call = API.update(u);
-
             call.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
@@ -93,15 +97,19 @@ public class EditProfileActivity extends AppCompatActivity{
                     if (response.code()!=404){
                         Log.i("response code=",""+response.code());
                         updateUserLogged(u);
-                        incorrectpwdText.setText("Update made correctly");
+                        String text = "Update made correctly";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        progressBar.setVisibility(viewEditProfile.INVISIBLE);
                     }
                     else{
                         Context context = getApplicationContext();
                         String text = "Information could not be changed";
-                        incorrectpwdText.setText(text);
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+                        progressBar.setVisibility(viewEditProfile.INVISIBLE);
                     }
                 }
 
@@ -113,11 +121,15 @@ public class EditProfileActivity extends AppCompatActivity{
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
+                    progressBar.setVisibility(viewEditProfile.INVISIBLE);
                 }
             });
         }
-        else
-            incorrectpwdText.setText("Passwords are different");
+        String text = "Passwords are different";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+        progressBar.setVisibility(viewEditProfile.INVISIBLE);
     }
 
     public void exitClick(View v){
