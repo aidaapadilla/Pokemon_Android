@@ -43,7 +43,8 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void rankingClick(View v){
-        //intent ranking
+        Intent intent = new Intent(this, RankingActivity.class);
+        startActivity(intent);
     }
 
     public void editClick(View v){

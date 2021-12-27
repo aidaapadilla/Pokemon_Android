@@ -50,17 +50,6 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         notifyItemInserted(position);
     }
 
-    /*
-    public void sendMessage(int position, View v) {
-        Track track = values.get(position);
-        Intent intent = new Intent(v.getContext(), TracksActivity.class);
-        intent.putExtra("Track title", track.getTitle());
-        intent.putExtra("Track singer",track.getSinger());
-        intent.putExtra("Track id", track.getId());
-        v.getContext().startActivity(intent);
-    }
-
-     */
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public AdapterPokemon(List<Pokemons> myDataset) {

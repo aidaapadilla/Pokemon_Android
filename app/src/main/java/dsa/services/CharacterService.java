@@ -1,5 +1,7 @@
 package dsa.services;
 
+import java.util.List;
+
 import dsa.models.Character;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -13,4 +15,6 @@ public interface CharacterService {
     Call<Character> getCharacter(@Path("name") String name);
     @POST("/dsaApp/endpoint/character")
     Call<Character> newCharacter(@Body Character character);
+    @GET("/dsaApp/endpoint/ranking")
+    Call<List<Character>> getRanking();
 }
