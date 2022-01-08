@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dsa.ejercicios_practica.pokemon_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        tools:replace="android:icon,android:theme"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -14,34 +16,48 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".RankingActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".OptionsActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".LogInActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".CharacterCreationActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".AllObjectsActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".EditProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".PokedexActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".ProfileActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
+            android:exported="true"
+            tools:node="merge"/>
+        <activity
+            android:name="com.unity3d.player.UnityPlayerActivity"
+            android:exported="true"
+            tools:node="merge"/>
         <activity
             android:name=".SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

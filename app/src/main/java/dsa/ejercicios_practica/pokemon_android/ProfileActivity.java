@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.unity3d.player.UnityPlayerActivity;
 
 import dsa.models.Character;
 import dsa.models.User;
@@ -175,7 +176,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void playClick(View v){
-        //obrir la partida
+        Intent intent = new Intent(this, UnityPlayerActivity.class);
+        startActivity(intent);
     }
 
     public void storeButtonClick(View view){

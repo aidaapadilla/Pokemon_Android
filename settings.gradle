@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Pokemon_Android"
-include ':app'
+include ':app', ':unityLibrary-debug'

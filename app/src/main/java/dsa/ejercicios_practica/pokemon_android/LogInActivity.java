@@ -77,7 +77,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void login_click(View view) {
-        viewLogin =view;
+        viewLogin = view;
         username = usernameEditText.getText().toString();
         password = passwordEditText.getText().toString();
         doLoginCall(username,password);

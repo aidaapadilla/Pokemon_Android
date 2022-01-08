@@ -47,7 +47,7 @@ public class SplashScreen extends Activity {
                 username = "";
                 password= "";
 
-                //getUserLogged(); //Comentar si se quiere pasar por la parte de login y register
+                getUserLogged(); //Comentar si se quiere pasar por la parte de login y register
 
                 if (username.equals(password)) {
                     Intent intent = new Intent(SplashScreen.this, LogInActivity.class);

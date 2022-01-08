@@ -16,8 +16,6 @@ import dsa.models.Character;
 public class AdapterRanking extends RecyclerView.Adapter<AdapterRanking.ViewHolder> {
     private List<Character> values;
 
-
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -46,7 +44,7 @@ public class AdapterRanking extends RecyclerView.Adapter<AdapterRanking.ViewHold
 
     public void add(int position, Character item) {
         values.add(position, item);
-        notifyItemInserted(position);
+        notifyItemInserted(position); // Used for informing that the list needs to be changed
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
