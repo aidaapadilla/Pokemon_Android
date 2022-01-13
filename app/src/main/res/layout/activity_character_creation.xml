@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/characterchoicewallpaper"
     tools:context=".CharacterCreationActivity">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:text="Let's start your adventure! First choose your character appareance and your initial pokemon"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,8 +23,11 @@
         android:id="@+id/nameCharacterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="monospace"
         android:text="Hello player1!"
-        android:textSize="34sp"
+        android:textColor="#000000"
+        android:textColorHighlight="#040404"
+        android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +74,14 @@
         android:id="@+id/avatarChoiceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Avatar:"
+        android:fontFamily="monospace"
+        android:text="AVATAR:"
+        android:textColor="#000000"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameCharacterText"
         app:layout_constraintVertical_bias="0.120000005" />
@@ -82,11 +90,14 @@
         android:id="@+id/pokemonChoiceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pokemon:"
+        android:fontFamily="monospace"
+        android:text="POKÉMON:"
+        android:textColor="#000000"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/avatarChoiceText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/avatarChoiceText" />
 
@@ -122,7 +133,7 @@
 
     <RadioGroup
         android:id="@+id/avatarRadioGroup"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/avatarChoiceText"
@@ -135,26 +146,41 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="0dp"
-            android:text="May" />
+            android:background="#00FFFFFF"
+            android:backgroundTint="#E4FFFFFF"
+            android:fontFamily="monospace"
+            android:text="May"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/avatar2RadioBt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:text="Red" />
+            android:background="#00FFFFFF"
+            android:backgroundTint="#E6FFFFFF"
+            android:fontFamily="monospace"
+            android:text="Red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/avatar3RadioBt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:text="James" />
+            android:background="#00FFFFFF"
+            android:backgroundTint="#E6FFFFFF"
+            android:fontFamily="monospace"
+            android:text="James"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/pokemonRadioGroup"
-        android:layout_width="110dp"
+        android:layout_width="130dp"
         android:layout_height="340dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/pokemonChoiceText"
@@ -166,36 +192,51 @@
             android:id="@+id/pokemon1RadioBt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:text="Charmander" />
+            android:background="#00FFFFFF"
+            android:fontFamily="monospace"
+            android:text="Charmander"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/pokemon2RadioBt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:text="Squirtle" />
+            android:background="#00FFFFFF"
+            android:backgroundTint="#E6FFFFFF"
+            android:fontFamily="monospace"
+            android:text="Squirtle"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/pokemon3RadioBt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="80dp"
-            android:text="Bulbasaur" />
+            android:background="#00FFFFFF"
+            android:backgroundTint="#E6FFFFFF"
+            android:fontFamily="monospace"
+            android:text="Bulbasaur"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RadioGroup>
 
     <Button
         android:id="@+id/goCharacterBt"
-        android:layout_width="80dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFF"
         android:onClick="goClick"
         android:text="GO!"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pokemon3imageView"
-        app:layout_constraintStart_toEndOf="@+id/avatar3imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonRadioGroup"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/progressBarCharacter"
