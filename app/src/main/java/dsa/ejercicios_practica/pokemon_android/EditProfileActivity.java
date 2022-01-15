@@ -125,11 +125,13 @@ public class EditProfileActivity extends AppCompatActivity{
                 }
             });
         }
-        String text = "Passwords are different";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        progressBar.setVisibility(viewEditProfile.INVISIBLE);
+        else {
+            String text = "Passwords are different";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            progressBar.setVisibility(viewEditProfile.INVISIBLE);
+        }
     }
 
     public void exitClick(View v){
