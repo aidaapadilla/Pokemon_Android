@@ -10,23 +10,22 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import dsa.models.Attack;
+import dsa.models.Basepokemon;
 import dsa.models.Pokemons;
 
 public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHolder> {
 
-    private List<Pokemons> pokemonList;
+    private List<Basepokemon> pokemonList;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtNamePokemon;
+        public TextView txtMaxHealthPokemon;
         public TextView txtTypePokemon;
-        public TextView txtAttacksPokemon;
         public ImageView imgPokemon;
         public View layout;
 
@@ -34,25 +33,25 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
             super(v);
             layout = v;
             txtNamePokemon = (TextView) v.findViewById(R.id.namePokemon);
+            txtMaxHealthPokemon = (TextView) v.findViewById(R.id.healthPokemon);
             txtTypePokemon = (TextView) v.findViewById(R.id.typePokemon);
-            txtAttacksPokemon = (TextView) v.findViewById(R.id.attackListPokemon);
             imgPokemon = (ImageView) v.findViewById(R.id.imgPokemon);
         }
     }
 
-    public void setData(List<Pokemons> myDataset) {
+    public void setData(List<Basepokemon> myDataset) {
         pokemonList = myDataset;
         notifyDataSetChanged();
     }
 
-    public void add(int position, Pokemons item) {
+    public void add(int position, Basepokemon item) {
         pokemonList.add(position, item);
         notifyItemInserted(position);
     }
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterPokemon(List<Pokemons> myDataset) {
+    public AdapterPokemon(List<Basepokemon> myDataset) {
         pokemonList = myDataset;
     }
 
@@ -76,23 +75,11 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        Pokemons pokemon = pokemonList.get(position);
-        String namelevel = pokemon.getName() + " " + Double.toString(pokemon.getLevel());
-        holder.txtNamePokemon.setText(namelevel);
+        Basepokemon pokemon = pokemonList.get(position);
+        holder.txtNamePokemon.setText(pokemon.getName());
+        holder.txtMaxHealthPokemon.setText(Double.toString(pokemon.getMaxhealth()));
+
         holder.txtTypePokemon.setText(pokemon.getType());
-        String text = null;
-        if(pokemon.getAttack1name()!=null){
-            text = pokemon.getAttack1name();
-        }
-        if(pokemon.getAttack2name()!=null){
-            if(text!=null) {
-                text = text + "," + pokemon.getAttack2name();
-            }
-            else{
-                text = pokemon.getAttack2name();
-            }
-        }
-        holder.txtAttacksPokemon.setText(text);
 
         if(pokemon.getName().equals("Charmander")){
             holder.imgPokemon.setImageResource(R.drawable.charmander);

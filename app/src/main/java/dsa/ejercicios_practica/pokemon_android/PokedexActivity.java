@@ -14,6 +14,7 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import dsa.models.Basepokemon;
 import dsa.models.Pokemons;
 import dsa.services.PokemonService;
 import dsa.services.UserService;
@@ -30,7 +31,7 @@ public class PokedexActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     PokemonService API;
-    List<Pokemons> pokemonList;
+    List<Basepokemon> pokemonList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +62,10 @@ public class PokedexActivity extends AppCompatActivity {
     }
 
     public void doApiCall(){
-        Call<List<Pokemons>> call = API.getPokemons();
-        call.enqueue(new Callback<List<Pokemons>>() {
+        Call<List<Basepokemon>> call = API.getPokemons();
+        call.enqueue(new Callback<List<Basepokemon>>() {
             @Override
-            public void onResponse(Call<List<Pokemons>> call, Response<List<Pokemons>> response) {
+            public void onResponse(Call<List<Basepokemon>> call, Response<List<Basepokemon>> response) {
                 if(response.code()==200) {
                     pokemonList=response.body();
                     mAdapter.setData(pokemonList);
@@ -78,7 +79,7 @@ public class PokedexActivity extends AppCompatActivity {
                 }}
 
             @Override
-            public void onFailure(Call<List<Pokemons>> call, Throwable t) {
+            public void onFailure(Call<List<Basepokemon>> call, Throwable t) {
                 Toast toast = Toast.makeText(PokedexActivity.this,"ERROR DE CONEXIÓN, no se ha podido realizar la petición.",Toast.LENGTH_SHORT);
                 toast.show();
             }

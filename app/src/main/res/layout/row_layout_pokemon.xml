@@ -3,6 +3,7 @@
     android:id="@+id/RelativeLayoutPokemon"
     android:layout_width="fill_parent"
     android:layout_height="120dp"
+    android:background="@drawable/square"
     android:padding="6dip">
 
     <ImageView
@@ -31,12 +32,13 @@
         android:layout_marginEnd="6dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Name"
+        android:textColor="#000000"
         android:textSize="28sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/typePokemon"
-        android:layout_width="100dp"
+        android:id="@+id/healthPokemon"
+        android:layout_width="200dp"
         android:layout_height="56dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -47,12 +49,12 @@
         android:layout_marginEnd="210dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="monospace"
-        android:text="type"
-        android:textSize="18sp"
-        android:textStyle="bold|italic" />
+        android:text="health"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/attackListPokemon"
+        android:id="@+id/typePokemon"
         android:layout_width="200dp"
         android:layout_height="62dp"
         android:layout_alignParentStart="true"
@@ -64,7 +66,9 @@
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="monospace"
-        android:text="attackList"
-        android:textSize="18sp" />
+        android:text="type"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
 
 </RelativeLayout>
