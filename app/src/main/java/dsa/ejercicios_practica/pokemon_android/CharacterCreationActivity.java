@@ -126,7 +126,7 @@ public class CharacterCreationActivity extends AppCompatActivity {
         }
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);
         String username = sharedPref.getString("name",null);
-        Character character = new Character(charactername,username,avatar,"level1",500.0,0.0,pokemon,null,null,null,null,null);
+        Character character = new Character(charactername,username,avatar,"6","level1",500.0,0.0,pokemon,null,null,null,null,null);
         progressBar.setVisibility(viewCharacter.VISIBLE);
         doAPIcall(character);
     }

@@ -53,6 +53,8 @@
         <activity
             android:name="com.unity3d.player.UnityPlayerActivity"
             android:exported="true"
+            android:launchMode="singleTask"
+            android:process=":unityplayer"
             tools:node="merge"/>
         <activity
             android:name=".SplashScreen"

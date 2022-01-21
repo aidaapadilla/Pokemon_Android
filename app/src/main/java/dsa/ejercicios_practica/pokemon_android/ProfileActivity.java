@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -18,7 +18,6 @@ import com.google.gson.GsonBuilder;
 import com.unity3d.player.UnityPlayerActivity;
 
 import dsa.models.Character;
-import dsa.models.User;
 import dsa.services.CharacterService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,11 +27,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    static final String BASE_URL = "http://10.0.2.2:8080/dsaApp/";
+    static final String BASE_URL = "http://147.83.7.204:8080";
     CharacterService API;
 
     ImageView avatarImg;
     ImageView mapImg;
+
+    String charactername;
+    String idusername;
+    String namefirstpokemon = null;
+    String object1 = null;
+    String object2 = null;
+    String object3 = null;
+
+    Character character;
 
     View viewprofile;
 
@@ -92,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Character> call, Response<Character> response) {
                 if(response.code()==201){
-                    Character character = response.body();
+                    character = response.body();
                     setData(character);}
                 else{
                     Context context = getApplicationContext();
@@ -125,12 +133,16 @@ public class ProfileActivity extends AppCompatActivity {
             avatarImg.setImageResource(R.drawable.james);
         }
 
-        characternameText.setText(c.getName());
+        charactername = c.getName();
+        characternameText.setText(charactername);
         if(c.getPokemon1name()!=null) {
             pokemon1Text.setText(c.getPokemon1name());
         }
         if(c.getPokemon2name()!=null) {
             pokemon2Text.setText(c.getPokemon2name());
+        }
+        else{
+            namefirstpokemon = c.getPokemon2name();
         }
         if(c.getPokemon3name()!=null) {
             pokemon3Text.setText(c.getPokemon3name());
@@ -144,6 +156,7 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject1name() + ",";
             }
+            object1 = c.getObject1name();
         }
         if(c.getObject2name()!=null){
             if(text!=null) {
@@ -152,6 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject2name() + ",";
             }
+            object2 = c.getObject2name();
         }
         if(c.getObject3name()!=null){
             if(text!=null){
@@ -160,8 +174,11 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject3name() + ",";
             }
+            object3 = c.getObject3name();
 
         }
+
+        idusername = c.getId();
         nameMapText.setText(c.getMap());
         objectsText.setText(text);
         moneyText.setText(Double.toString(c.getMoney()));
@@ -171,12 +188,27 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void optionsClick(View view){
+        doAPIcall(charactername);
         Intent intent = new Intent(ProfileActivity.this, OptionsActivity.class);
         startActivity(intent);
     }
 
     public void playClick(View v){
         Intent intent = new Intent(this, UnityPlayerActivity.class);
+        intent.putExtra("id",idusername);
+        intent.putExtra("charactername",charactername);
+        if (namefirstpokemon!=null){
+            intent.putExtra("pokemon",namefirstpokemon);
+        }
+        if (object1!=null){
+            intent.putExtra("object1",object1);
+        }
+        if (object2!=null){
+            intent.putExtra("object2",object2);
+        }
+        if (object3!=null){
+            intent.putExtra("object3",object3);
+        }
         startActivity(intent);
     }
 
@@ -186,5 +218,6 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
         startActivity(intent);
     }
+
 
 }

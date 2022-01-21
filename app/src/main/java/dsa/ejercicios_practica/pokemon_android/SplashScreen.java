@@ -28,7 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SplashScreen extends Activity {
 
-    private final int DURACION_SPLASH = 3000;
+    private final int DURACION_SPLASH = 4500;
     Context context;
     SharedPreferences sharedPref;
     String username;
@@ -47,7 +47,7 @@ public class SplashScreen extends Activity {
                 username = "";
                 password= "";
 
-                //getUserLogged(); //Comentar si se quiere pasar por la parte de login y register
+                getUserLogged(); //Comentar si se quiere pasar por la parte de login y register
 
                 if (username.equals(password)) {
                     Intent intent = new Intent(SplashScreen.this, LogInActivity.class);
@@ -63,7 +63,6 @@ public class SplashScreen extends Activity {
             };
         }, DURACION_SPLASH);
     }
-
 
     public void getUserLogged() {
         SharedPreferences sharedPref = getSharedPreferences("userlogged", Context.MODE_PRIVATE);

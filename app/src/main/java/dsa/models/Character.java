@@ -13,15 +13,17 @@ public class Character {
     private String object1name;
     private String object2name;
     private String object3name;
+    private String id;
     //LinkedList<Pokemons> pokemons = new LinkedList<Pokemons>();
     //LinkedList<Object> objects = new LinkedList<Object>();
 
     public Character(){}
 
-    public Character(String name, String username, String avatar, String map, Double money, Double points, String p1_name, String p2_name, String p3_name, String o1_name, String o2_name, String o3_name){
+    public Character(String name, String username, String avatar, String id, String map, Double money, Double points, String p1_name, String p2_name, String p3_name, String o1_name, String o2_name, String o3_name){
         this();
         setName(name);
         setUsername(username);
+        setId(id);
         setMoney(money);
         setPoints(points);
         setPokemon1name(p1_name);
@@ -97,6 +99,9 @@ public class Character {
     public void setUsername(String username){
         this.username = username;
     }
+
+    public String getId(){return this.id;}
+    public void setId(String id){this.id=id;}
 
     /*
     public int compareTo(Character c)
