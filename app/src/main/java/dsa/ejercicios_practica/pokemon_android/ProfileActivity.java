@@ -39,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     String object1 = null;
     String object2 = null;
     String object3 = null;
+    int avatar;
 
     Character character;
 
@@ -125,12 +126,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         if(c.getAvatar().equals("may")) {
             avatarImg.setImageResource(R.drawable.may);
+            avatar = 2;
         }
         else if(c.getAvatar().equals("red")){
             avatarImg.setImageResource(R.drawable.red);
+            avatar = 1;
         }
         else if(c.getAvatar().equals("james")){
             avatarImg.setImageResource(R.drawable.james);
+            avatar = 0;
         }
 
         charactername = c.getName();
@@ -197,6 +201,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, UnityPlayerActivity.class);
         intent.putExtra("id",idusername);
         intent.putExtra("charactername",charactername);
+        intent.putExtra("avatarname",avatar);
         if (namefirstpokemon!=null){
             intent.putExtra("pokemon",namefirstpokemon);
         }
