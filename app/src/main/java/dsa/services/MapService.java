@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface MapService {
         @GET("/maps")
-        Call<Map> getMaps(@Body List<Map> mapList);
+        Call<List<Map>> getMaps();
 }
 

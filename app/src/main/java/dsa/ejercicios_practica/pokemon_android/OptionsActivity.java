@@ -39,7 +39,8 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void mapsClick(View v){
-        //intent maps
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
     }
 
     public void rankingClick(View v){

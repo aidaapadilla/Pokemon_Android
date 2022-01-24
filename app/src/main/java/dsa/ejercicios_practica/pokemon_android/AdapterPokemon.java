@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import dsa.models.Basepokemon;
-import dsa.models.Pokemons;
 
 public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHolder> {
 
