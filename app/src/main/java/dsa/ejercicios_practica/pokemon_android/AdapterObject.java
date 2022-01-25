@@ -124,15 +124,15 @@ public class AdapterObject extends RecyclerView.Adapter<AdapterObject.ViewHolder
         holder.txtDescriptionObject.setText(object.getDescription());
         //Bitmap bitmap = StringToBitmap(object.getImage());
         //holder.imgObject.setImageBitmap(bitmap);
-        if(object.getName().contains("potion")){
+        if(object.getName().contains("Potion")){
             holder.imgObject.setImageResource(R.drawable.potion1);
-        }else if(object.getName().contains("superpotion")){
+        }else if(object.getName().contains("Superpotion")){
             holder.imgObject.setImageResource(R.drawable.superpotion);
         }
-        else if(object.getName().contains("pokeball")){
+        else if(object.getName().contains("Pokeball")){
             holder.imgObject.setImageResource(R.drawable.pokeball);
         }
-        else if(object.getName().contains("superball")){
+        else if(object.getName().contains("Superball")){
             holder.imgObject.setImageResource(R.drawable.superball);
         }
         holder.txtNameObject.setOnClickListener(new OnClickListener() {
