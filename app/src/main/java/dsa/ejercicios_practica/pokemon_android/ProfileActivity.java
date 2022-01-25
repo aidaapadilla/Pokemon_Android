@@ -34,11 +34,6 @@ public class ProfileActivity extends AppCompatActivity {
     ImageView mapImg;
 
     String charactername;
-    String idusername;
-    String namefirstpokemon = null;
-    String object1 = null;
-    String object2 = null;
-    String object3 = null;
     int avatar;
 
     Character character;
@@ -137,16 +132,12 @@ public class ProfileActivity extends AppCompatActivity {
             avatar = 0;
         }
 
-        charactername = c.getName();
         characternameText.setText(charactername);
         if(c.getPokemon1name()!=null) {
             pokemon1Text.setText(c.getPokemon1name());
         }
         if(c.getPokemon2name()!=null) {
             pokemon2Text.setText(c.getPokemon2name());
-        }
-        else{
-            namefirstpokemon = c.getPokemon2name();
         }
         if(c.getPokemon3name()!=null) {
             pokemon3Text.setText(c.getPokemon3name());
@@ -160,7 +151,6 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject1name() + ",";
             }
-            object1 = c.getObject1name();
         }
         if(c.getObject2name()!=null){
             if(text!=null) {
@@ -169,7 +159,6 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject2name() + ",";
             }
-            object2 = c.getObject2name();
         }
         if(c.getObject3name()!=null){
             if(text!=null){
@@ -178,11 +167,8 @@ public class ProfileActivity extends AppCompatActivity {
             else{
                 text = c.getObject3name() + ",";
             }
-            object3 = c.getObject3name();
-
         }
 
-        idusername = c.getId();
         nameMapText.setText(c.getMap());
         objectsText.setText(text);
         moneyText.setText(Double.toString(c.getMoney()));
@@ -199,20 +185,25 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void playClick(View v){
         Intent intent = new Intent(this, UnityPlayerActivity.class);
-        intent.putExtra("id",idusername);
         intent.putExtra("charactername",charactername);
         intent.putExtra("avatarname",avatar);
-        if (namefirstpokemon!=null){
-            intent.putExtra("pokemon",namefirstpokemon);
+        if (character.getPokemon1name()!=null){
+            intent.putExtra("pokemon1",character.getPokemon1name());
         }
-        if (object1!=null){
-            intent.putExtra("object1",object1);
+        if (character.getPokemon2name()!=null){
+            intent.putExtra("pokemon2",character.getPokemon2name());
         }
-        if (object2!=null){
-            intent.putExtra("object2",object2);
+        if (character.getPokemon3name()!=null){
+            intent.putExtra("pokemon3",character.getPokemon3name());
         }
-        if (object3!=null){
-            intent.putExtra("object3",object3);
+        if (character.getObject1name()!=null){
+            intent.putExtra("object1",character.getObject1name());
+        }
+        if (character.getObject2name()!=null){
+            intent.putExtra("object1",character.getObject2name());
+        }
+        if (character.getObject3name()!=null){
+            intent.putExtra("object1",character.getObject3name());
         }
         startActivity(intent);
     }
