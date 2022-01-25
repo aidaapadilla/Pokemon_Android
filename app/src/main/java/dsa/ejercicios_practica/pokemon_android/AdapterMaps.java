@@ -74,13 +74,13 @@ public class AdapterMaps extends RecyclerView.Adapter<AdapterMaps.ViewHolder> {
         holder.txtNameMap.setText(map.getName());
 
         if(map.getLevel()==1.0){
-            //holder.imgMap.setImageResource(R.drawable.level1);
+            holder.imgMap.setImageResource(R.drawable.hometown);
         }
         else if(map.getLevel()==2.0){
-            //holder.imgMap.setImageResource(R.drawable.level2);
+            holder.imgMap.setImageResource(R.drawable.route);
         }
         else if(map.getLevel()==3.0){
-            //holder.imgMap.setImageResource(R.drawable.level3);
+            holder.imgMap.setImageResource(R.drawable.gym);
         }
     }
 

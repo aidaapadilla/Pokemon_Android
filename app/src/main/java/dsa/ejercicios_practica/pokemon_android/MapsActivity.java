@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -87,6 +88,11 @@ public class MapsActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void exitClick(View v){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
     }
 
 }

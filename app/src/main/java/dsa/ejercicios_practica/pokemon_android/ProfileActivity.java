@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
             avatar = 0;
         }
 
-        characternameText.setText(charactername);
+        characternameText.setText(c.getName());
         if(c.getPokemon1name()!=null) {
             pokemon1Text.setText(c.getPokemon1name());
         }
@@ -173,8 +173,16 @@ public class ProfileActivity extends AppCompatActivity {
         objectsText.setText(text);
         moneyText.setText(Double.toString(c.getMoney()));
         pointsText.setText(Double.toString(c.getPoints()));
+        if(c.getMap().equals("HomeTown")){
+            mapImg.setImageResource(R.drawable.hometown);
+        }
+        else if(c.getMap().equals("Route1")){
+            mapImg.setImageResource(R.drawable.route);
+        }
+        else if(c.getMap().equals("Gym")){
+            mapImg.setImageResource(R.drawable.gym);
+        }
 
-        //falta mapa
     }
 
     public void optionsClick(View view){

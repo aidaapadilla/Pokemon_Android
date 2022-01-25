@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -89,5 +90,10 @@ public class RankingActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void exitClick(View v){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
     }
 }

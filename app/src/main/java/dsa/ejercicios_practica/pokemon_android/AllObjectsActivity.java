@@ -110,7 +110,7 @@ public class AllObjectsActivity extends AppCompatActivity {
     }
 
     public void buyAnItem(int position, String name){
-        Character ch = new Character(name,null,null,null,null,null,null,null,null,null,null,null,null);
+        Character ch = new Character(name,null,null,null,null,null,null,null,null,null,null,null);
         ObjectWithCharacter objectWithCharacter = new ObjectWithCharacter(objectList.get(position),ch);
         Call<Character> call = API.buyObject(objectWithCharacter);
         call.enqueue(new Callback<Character>() {

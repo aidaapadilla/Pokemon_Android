@@ -3,7 +3,9 @@ package dsa.ejercicios_practica.pokemon_android;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -84,5 +86,10 @@ public class PokedexActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void exitClick(View v){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        this.startActivity(intent);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public interface MapService {
-        @GET("/maps")
+        @GET("/dsaApp/endpoint/maps")
         Call<List<Map>> getMaps();
 }
 

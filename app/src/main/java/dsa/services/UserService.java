@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 public interface UserService{
     final String BASE_URL = "http://147.83.7.204:8080";
     @POST("/dsaApp/endpoint/user")
-    Call<User> register(@Body User user); //Register??
+    Call<User> register(@Body User user);
     @POST("/dsaApp/endpoint/login")
     Call<User> login(@Body Credentials credentials);
     @PUT("/dsaApp/endpoint/updateuser")
