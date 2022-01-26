@@ -121,6 +121,8 @@ public class AllObjectsActivity extends AppCompatActivity {
                 Log.d("Shop",response.message());
                 if(response.code() == 201){
                     toast = Toast.makeText(AllObjectsActivity.this, "Compra realizada", Toast.LENGTH_SHORT);
+                    Intent intent = new Intent(AllObjectsActivity.this, ProfileActivity.class);
+                    startActivity(intent);
                 }
                 else{
                     toast = Toast.makeText(AllObjectsActivity.this, "Error en la compra", Toast.LENGTH_SHORT);
@@ -144,7 +146,6 @@ public class AllObjectsActivity extends AppCompatActivity {
         dialog.dismiss();
         Intent returnIntent = new Intent();
         setResult(Activity.RESULT_OK, returnIntent);
-        finish();
         dialog.show();
     }
 

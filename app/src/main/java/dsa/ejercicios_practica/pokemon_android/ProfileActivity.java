@@ -217,8 +217,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void storeButtonClick(View view){
-        viewprofile=view;
-        progressBar.setVisibility(viewprofile.VISIBLE);
+        //viewprofile=view;
+        //progressBar.setVisibility(viewprofile.VISIBLE);
         Intent intent = new Intent(ProfileActivity.this, AllObjectsActivity.class);
         startActivity(intent);
     }
