@@ -1,20 +1,31 @@
 package dsa.models;
-// Creamos modelo porque en un POST no podemos mandar dos objetos guardados en el body
+
 public class ObjectWithCharacter {
-    private Objects object;
-    private Character character;
+    private String object;
+    private Double price;
+    private String character;
 
 
     public ObjectWithCharacter(){}
-    public ObjectWithCharacter(Objects object, Character character){
+    public ObjectWithCharacter(String object,Double price, String character){
         this();
         setCharacter(character);
+        setPrice(price);
         setObject(object);
 
     }
 
-    public Character getCharacter() {return character;}
-    public Objects getObject() {return object;}
-    public void setCharacter(Character character) {this.character = character;}
-    public void setObject(Objects object) {this.object = object;}
+    public String getCharacter() {return character;}
+    public String getObject() {return object;}
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setCharacter(String character) {this.character = character;}
+    public void setObject(String object) {this.object = object;}
 }

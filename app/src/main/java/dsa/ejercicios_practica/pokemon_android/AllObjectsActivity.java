@@ -111,9 +111,8 @@ public class AllObjectsActivity extends AppCompatActivity {
 
     public void buyAnItem(int position, String name){
 
-        Character ch = new Character(name,"","","",0.0,0.0,"","","","","","");
 
-        ObjectWithCharacter objectWithCharacter = new ObjectWithCharacter(objectList.get(position),ch);
+        ObjectWithCharacter objectWithCharacter = new ObjectWithCharacter(objectList.get(position).getName(),objectList.get(position).getPrice(),name);
         Call<Character> call = API.buyObject(objectWithCharacter);
         call.enqueue(new Callback<Character>() {
             @Override
