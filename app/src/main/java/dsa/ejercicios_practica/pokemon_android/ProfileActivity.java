@@ -208,10 +208,10 @@ public class ProfileActivity extends AppCompatActivity {
             intent.putExtra("object1",character.getObject1name());
         }
         if (character.getObject2name()!=null){
-            intent.putExtra("object1",character.getObject2name());
+            intent.putExtra("object2",character.getObject2name());
         }
         if (character.getObject3name()!=null){
-            intent.putExtra("object1",character.getObject3name());
+            intent.putExtra("object3",character.getObject3name());
         }
         startActivity(intent);
     }

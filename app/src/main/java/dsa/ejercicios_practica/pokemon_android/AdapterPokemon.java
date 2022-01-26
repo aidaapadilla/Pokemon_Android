@@ -89,8 +89,8 @@ public class AdapterPokemon extends RecyclerView.Adapter<AdapterPokemon.ViewHold
         else if(pokemon.getName().equals("Bulbasaur")){
             holder.imgPokemon.setImageResource(R.drawable.bulbasaur);
         }
-        else if(pokemon.getName().equals("Glaceon")){
-            holder.imgPokemon.setImageResource(R.drawable.glaceon);
+        else if(pokemon.getName().equals("Cubchoo")){
+            holder.imgPokemon.setImageResource(R.drawable.cubchoo);
         }
         else if(pokemon.getName().equals("Geodude")){
             holder.imgPokemon.setImageResource(R.drawable.geodude);
